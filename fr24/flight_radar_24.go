@@ -1,16 +1,13 @@
 /*
-Logic used to query data fom FR24 to check various stats.
+Queries Flightradar24 for the most tracked aircraft.
 */
 package fr24
 
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"log"
 )
-
-const FR24_BASE = "https://www.flightradar24.com"
 
 type Fr24MostTrackedRes struct {
 	Version     string                `json:"version"`
@@ -30,10 +27,6 @@ type Fr24MostTrackedData struct {
 	To_city       string `json:"to_city"`
 	Model         string `json:"model"`
 	Aircraft_type string `json:"type"`
-}
-
-var FR24_ENDPOINTS = map[string]string{
-	"most_tracked": fmt.Sprintf("%s/flights/most-tracked", FR24_BASE),
 }
 
 type (

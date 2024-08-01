@@ -17,4 +17,7 @@ func main() {
 	}
 
 	fmt.Println(tracked.Data[0])
+
+	// give me a random flight link
+	fr24.GetRandomFlight(requester)
 }
