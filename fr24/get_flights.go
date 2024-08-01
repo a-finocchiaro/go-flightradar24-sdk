@@ -33,6 +33,14 @@ func (fd *FlightData) UnmarshalJSON(data []byte) error {
 	/*
 	* Parses the mixed type array flight data from the feed API endpoint.
 	 */
+
+	// flight data will always have a start byte of 91 since that is the ASCII value of
+	// '[', which is the start of an array. We can safely ignore any non-arrays here, but
+	// without an error since we just want to ignore this.
+	if data[0] != 91 {
+		return nil
+	}
+
 	temp := []interface{}{
 		&fd.Icao_24bit,
 		&fd.Lat,
@@ -63,9 +71,9 @@ func (fd *FlightData) UnmarshalJSON(data []byte) error {
 }
 
 type Fr24FeedData struct {
-	Full_count int                        `json:"full_count"`
-	Version    int                        `json:"version"`
-	Flights    map[string]json.RawMessage `json:"-"`
+	Full_count int                   `json:"full_count"`
+	Version    int                   `json:"version"`
+	Flights    map[string]FlightData `json:"-"`
 }
 
 func (f *Fr24FeedData) UnmarshalJSON(data []byte) error {
@@ -87,14 +95,25 @@ func (f *Fr24FeedData) UnmarshalJSON(data []byte) error {
 	}
 
 	f.Full_count = temp.FullCount
-	f.Flights = temp.Flights
+	f.Flights = make(map[string]FlightData)
+
+	// parse the json of each flight
+	for flightId, flight := range temp.Flights {
+		var flightData FlightData
+
+		if err := json.Unmarshal(flight, &flightData); err != nil {
+			continue
+		}
+
+		f.Flights[flightId] = flightData
+	}
 
 	return nil
 }
 
 func GetRandomFlight(requester Requester) {
 	var feedData Fr24FeedData
-	var rand_flight json.RawMessage
+	var rand_flight FlightData
 	var flightId string
 
 	body, err := requester(FR24_ENDPOINTS["all_tracked"])
@@ -121,14 +140,7 @@ func GetRandomFlight(requester Requester) {
 		idx++
 	}
 
-	// unmarshal the flight data into a struct
-	var flightData FlightData
-
-	if err := json.Unmarshal(rand_flight, &flightData); err != nil {
-		log.Fatalln(err)
-	}
-
 	// provide a link to the flight
-	fmt.Println(flightData)
-	fmt.Printf("%s/%s/%s\n", FR24_BASE, flightData.Callsign, flightId)
+	fmt.Println(rand_flight)
+	fmt.Printf("%s/%s/%s\n", FR24_BASE, rand_flight.Callsign, flightId)
 }
