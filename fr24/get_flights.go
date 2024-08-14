@@ -3,7 +3,6 @@ package fr24
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"math/rand"
 )
 
@@ -70,6 +69,10 @@ func (fd *FlightData) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type Fr24FeedInterface interface {
+	UnmarshalJSON([]byte) error
+}
+
 type Fr24FeedData struct {
 	Full_count int                   `json:"full_count"`
 	Version    int                   `json:"version"`
@@ -84,7 +87,9 @@ func (f *Fr24FeedData) UnmarshalJSON(data []byte) error {
 		FullCount int                        `json:"full_count"`
 		Version   int                        `json:"version"`
 		Flights   map[string]json.RawMessage `json:"-"`
-	}{}
+	}{
+		Flights: make(map[string]json.RawMessage),
+	}
 
 	if err := json.Unmarshal(data, &temp); err != nil {
 		return err
@@ -93,6 +98,11 @@ func (f *Fr24FeedData) UnmarshalJSON(data []byte) error {
 	if err := json.Unmarshal(data, &temp.Flights); err != nil {
 		return err
 	}
+
+	// remove the full_count and version keys since they should not exist in the flight data
+	// this is jank, but seems to be the best way to solve this issue.
+	delete(temp.Flights, "full_count")
+	delete(temp.Flights, "version")
 
 	f.Full_count = temp.FullCount
 	f.Flights = make(map[string]FlightData)
@@ -111,19 +121,29 @@ func (f *Fr24FeedData) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func GetRandomFlight(requester Requester) {
-	var feedData Fr24FeedData
-	var rand_flight FlightData
-	var flightId string
-
+func GetFlights(requester Requester, flightFeed Fr24FeedInterface) error {
 	body, err := requester(FR24_ENDPOINTS["all_tracked"])
 
 	if err != nil {
-		log.Fatalln(err)
+		return err
 	}
 
-	if err := json.Unmarshal(body, &feedData); err != nil {
-		log.Fatalln(err)
+	if err := json.Unmarshal(body, &flightFeed); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func GetRandomFlight(requester Requester) (string, error) {
+	var rand_flight FlightData
+	var flightId string
+	var feedData Fr24FeedData
+
+	err := GetFlights(requester, &feedData)
+
+	if err != nil {
+		return "", err
 	}
 
 	// find a random flight
@@ -141,6 +161,5 @@ func GetRandomFlight(requester Requester) {
 	}
 
 	// provide a link to the flight
-	fmt.Println(rand_flight)
-	fmt.Printf("%s/%s/%s\n", FR24_BASE, rand_flight.Callsign, flightId)
+	return fmt.Sprintf("%s/%s/%s\n", FR24_BASE, rand_flight.Callsign, flightId), nil
 }

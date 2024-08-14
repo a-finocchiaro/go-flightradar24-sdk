@@ -20,4 +20,9 @@ func main() {
 
 	// give me a random flight link
 	fr24.GetRandomFlight(requester)
+
+	var myFeed fr24.Fr24FeedData
+	fr24.GetFlights(requester, &myFeed)
+
+	fmt.Println(myFeed)
 }
