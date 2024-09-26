@@ -44,6 +44,7 @@ func TestGetFr24MostTracked(t *testing.T) {
 		{
 			name: "json decode error",
 			requester: func(s string) ([]byte, error) {
+				// the error is the missing `}` in the first data element
 				return []byte(`{
 					"version": "0.3.9",
 					"update_time": 1722142873.821783,
@@ -63,7 +64,7 @@ func TestGetFr24MostTracked(t *testing.T) {
 					]
 				}`), nil
 			},
-			expectedError: ErrUnmarshall,
+			expectedError: Fr24Error{Err: "invalid character ']' after object key:value pair"},
 		},
 	}
 
@@ -129,7 +130,7 @@ func TestGetFr24MostTracked(t *testing.T) {
 			res, err := GetFR24MostTracked(subtest.requester)
 
 			if !errors.Is(err, subtest.expectedError) {
-				t.Errorf("Expected no errors, got error (%v)", err)
+				t.Errorf("Expected (%s), got error (%v)", subtest.expectedError, err)
 			}
 
 			if res.Data != nil {

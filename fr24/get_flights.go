@@ -92,11 +92,11 @@ func (f *Fr24FeedData) UnmarshalJSON(data []byte) error {
 	}
 
 	if err := json.Unmarshal(data, &temp); err != nil {
-		return err
+		return NewFr24Error(err)
 	}
 
 	if err := json.Unmarshal(data, &temp.Flights); err != nil {
-		return err
+		return NewFr24Error(err)
 	}
 
 	// remove the full_count and version keys since they should not exist in the flight data
@@ -125,11 +125,11 @@ func GetFlights(requester Requester, flightFeed Fr24FeedInterface) error {
 	body, err := requester(FR24_ENDPOINTS["all_tracked"])
 
 	if err != nil {
-		return err
+		return NewFr24Error(err)
 	}
 
 	if err := json.Unmarshal(body, &flightFeed); err != nil {
-		return err
+		return NewFr24Error(err)
 	}
 
 	return nil

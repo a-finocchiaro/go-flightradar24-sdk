@@ -70,6 +70,46 @@ func TestGetFlights(t *testing.T) {
 		},
 	}
 
+	errorSubTests := []TestData{
+		{
+			name: "Request Error",
+			requester: func(s string) ([]byte, error) {
+				return []byte(``), Fr24Error{Err: "Bad Request"}
+			},
+			expectedError: Fr24Error{Err: "Bad Request"},
+		},
+		{
+			name: "JSON unmarshal error",
+			requester: func(s string) ([]byte, error) {
+				return []byte(`{
+					"full_count": 17238,
+					"version": 4,
+					"3655152d": [
+						"AC0A9A",
+						39.8283,
+						-101.8552,
+						11,
+						56100,
+						6,
+						"",
+						"F-KPUB1",
+						"BALL",
+						"N875TH",
+						1722800892,
+						"",
+						"",
+						"",
+						0,
+						8576,
+						"HBAL645",
+						0,
+						""
+				}`), nil
+			},
+			expectedError: Fr24Error{Err: "invalid character '}' after array element"},
+		},
+	}
+
 	for _, subtest := range goodSubTests {
 		t.Run(subtest.name, func(t *testing.T) {
 			var feedSpy SpyFr24FeedData
@@ -81,6 +121,21 @@ func TestGetFlights(t *testing.T) {
 
 			if len(feedSpy.Calls) != 1 {
 				t.Errorf("Expected %d call, got %d", 1, len(feedSpy.Calls))
+			}
+		})
+	}
+
+	for _, subtest := range errorSubTests {
+		t.Run(subtest.name, func(t *testing.T) {
+			var feedSpy SpyFr24FeedData
+			err := GetFlights(subtest.requester, &feedSpy)
+
+			if !errors.Is(err, subtest.expectedError) {
+				t.Errorf("Expected error (%s), got error (%v)", subtest.expectedError, err)
+			}
+
+			if len(feedSpy.Calls) != 0 {
+				t.Errorf("Expected %d call, got %d", 0, len(feedSpy.Calls))
 			}
 		})
 	}

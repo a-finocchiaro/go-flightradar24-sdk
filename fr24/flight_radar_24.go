@@ -5,7 +5,6 @@ package fr24
 
 import (
 	"encoding/json"
-	"errors"
 	"log"
 )
 
@@ -33,8 +32,6 @@ type (
 	Requester func(string) ([]byte, error)
 )
 
-var ErrUnmarshall = errors.New("could not unmarshall json")
-
 func GetFR24MostTracked(requester Requester) (Fr24MostTrackedRes, error) {
 	var most_tracked Fr24MostTrackedRes
 	body, err := requester(FR24_ENDPOINTS["most_tracked"])
@@ -45,7 +42,9 @@ func GetFR24MostTracked(requester Requester) (Fr24MostTrackedRes, error) {
 	}
 
 	if err := json.Unmarshal(body, &most_tracked); err != nil {
-		return most_tracked, ErrUnmarshall
+		fr24err := NewFr24Error(err)
+
+		return most_tracked, fr24err
 	}
 
 	return most_tracked, nil
