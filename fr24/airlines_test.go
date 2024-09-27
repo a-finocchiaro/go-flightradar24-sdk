@@ -95,7 +95,7 @@ func TestGetAirlineLogo(t *testing.T) {
 			expectedError: Fr24Error{Err: "png: invalid format: invalid checksum"},
 		},
 		{
-			name: "Invalid ",
+			name: "Invalid Data",
 			requester: func(s string) ([]byte, error) {
 				invalidImage := []byte{
 					0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A,
@@ -116,8 +116,20 @@ func TestGetAirlineLogo(t *testing.T) {
 	}
 
 	for _, subtest := range goodSubtests {
+		t.Run(subtest.name+"_CDN", func(t *testing.T) {
+			res, err := GetAirlineLogoCdn(subtest.requester, "UA", "UAL")
+
+			if !errors.Is(err, subtest.expectedError) {
+				t.Errorf("Expected no errors, got error (%v)", err)
+			}
+
+			if res.Len() == 0 {
+				t.Errorf("Expected encoded PNG image as a response, got nil.")
+			}
+		})
+
 		t.Run(subtest.name, func(t *testing.T) {
-			res, err := GetAirlineLogo(subtest.requester, "UA", "UAL")
+			res, err := GetAirlineLogo(subtest.requester, "UAL")
 
 			if !errors.Is(err, subtest.expectedError) {
 				t.Errorf("Expected no errors, got error (%v)", err)
@@ -130,8 +142,20 @@ func TestGetAirlineLogo(t *testing.T) {
 	}
 
 	for _, subtest := range errorSubtests {
+		t.Run(subtest.name+"_CDN", func(t *testing.T) {
+			res, err := GetAirlineLogoCdn(subtest.requester, "UA", "UAL")
+
+			if !errors.Is(err, subtest.expectedError) {
+				t.Errorf("Expected error (%v), got error (%v)", subtest.expectedError, err)
+			}
+
+			if res.Len() != 0 {
+				t.Errorf("Expected PNG image bytes to be empty.")
+			}
+		})
+
 		t.Run(subtest.name, func(t *testing.T) {
-			res, err := GetAirlineLogo(subtest.requester, "UA", "UAL")
+			res, err := GetAirlineLogo(subtest.requester, "UAL")
 
 			if !errors.Is(err, subtest.expectedError) {
 				t.Errorf("Expected error (%v), got error (%v)", subtest.expectedError, err)

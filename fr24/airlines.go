@@ -35,29 +35,58 @@ func GetAirlines(requester Requester) (AirlineRes, error) {
 	return airlines, nil
 }
 
-func GetAirlineLogo(requester Requester, icao string, iata string) (bytes.Buffer, error) {
+func GetAirlineLogoCdn(requester Requester, icao string, iata string) (bytes.Buffer, error) {
 	/**
-	* Gets a logo for a requested airline based on its icao and iata code.
+	* Gets a logo for a requested airline based on its icao and iata code from the CDN.
 	 */
 	var buf bytes.Buffer
 	endpoint := fmt.Sprintf("%s/%s_%s.png", FR24_ENDPOINTS["airline_logo_cdn"], icao, iata)
-
 	body, err := requester(endpoint)
 
 	if err != nil {
 		return buf, NewFr24Error(err)
 	}
 
-	img, _, err := image.Decode(bytes.NewReader(body))
+	if err := createPng(&buf, body); err != nil {
+		return buf, err
+	}
+
+	return buf, nil
+}
+
+func GetAirlineLogo(requester Requester, icao string) (bytes.Buffer, error) {
+	/**
+	* Get Logo from assets on Flightradar
+	 */
+	var buf bytes.Buffer
+	endpoint := fmt.Sprintf("%s/%s_logo0.png", FR24_ENDPOINTS["airline_logo"], icao)
+	body, err := requester(endpoint)
 
 	if err != nil {
 		return buf, NewFr24Error(err)
 	}
 
-	// encode the bytes into a png image
-	if err := png.Encode(&buf, img); err != nil {
-		return buf, NewFr24Error(err)
+	if err := createPng(&buf, body); err != nil {
+		return buf, err
 	}
 
 	return buf, nil
+}
+
+func createPng(buf *bytes.Buffer, data []byte) error {
+	img, _, err := image.Decode(bytes.NewReader(data))
+
+	if err != nil {
+		fmt.Println("error here")
+		return NewFr24Error(err)
+	}
+
+	fmt.Println("does it come here?")
+
+	// encode the bytes into a png image
+	if err := png.Encode(buf, img); err != nil {
+		return NewFr24Error(err)
+	}
+
+	return nil
 }

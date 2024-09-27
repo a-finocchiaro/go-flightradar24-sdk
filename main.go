@@ -26,6 +26,6 @@ func main() {
 
 	// fmt.Println(myFeed)
 
-	res, err := fr24.GetAirlineLogo(requester, "WN", "SWA")
-	fmt.Println(res)
+	// res, err := fr24.GetAirlineLogoCdn(requester, "WN", "SWA")
+	// fmt.Println(res)
 }
