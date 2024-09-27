@@ -81,8 +81,6 @@ func createPng(buf *bytes.Buffer, data []byte) error {
 		return NewFr24Error(err)
 	}
 
-	fmt.Println("does it come here?")
-
 	// encode the bytes into a png image
 	if err := png.Encode(buf, img); err != nil {
 		return NewFr24Error(err)
