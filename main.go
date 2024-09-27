@@ -19,10 +19,13 @@ func main() {
 	fmt.Println(tracked.Data[0])
 
 	// give me a random flight link
-	fr24.GetRandomFlight(requester)
+	// fr24.GetRandomFlight(requester)
 
-	var myFeed fr24.Fr24FeedData
-	fr24.GetFlights(requester, &myFeed)
+	// var myFeed fr24.Fr24FeedData
+	// fr24.GetFlights(requester, &myFeed)
 
-	fmt.Println(myFeed)
+	// fmt.Println(myFeed)
+
+	res, err := fr24.GetAirlineLogo(requester, "WN", "SWA")
+	fmt.Println(res)
 }

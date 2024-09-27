@@ -42,9 +42,7 @@ func GetFR24MostTracked(requester Requester) (Fr24MostTrackedRes, error) {
 	}
 
 	if err := json.Unmarshal(body, &most_tracked); err != nil {
-		fr24err := NewFr24Error(err)
-
-		return most_tracked, fr24err
+		return most_tracked, NewFr24Error(err)
 	}
 
 	return most_tracked, nil
