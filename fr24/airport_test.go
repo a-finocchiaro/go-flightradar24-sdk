@@ -15,7 +15,7 @@ type airportSubtest struct {
 }
 
 func loadJsonAirportData(t *testing.T) []byte {
-	data, err := os.ReadFile("airport_res.json")
+	data, err := os.ReadFile("../testdata/airport_res.json")
 
 	if err != nil {
 		t.Error(err.Error())
