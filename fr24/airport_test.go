@@ -166,6 +166,11 @@ func TestAirportDataStructs(t *testing.T) {
 				SatelliteImageProperties:  airport.Result.Response.Airport.PluginData.SatelliteImageProperties,
 			},
 		},
+		{
+			name:     "AirportDetailsCode",
+			actual:   airport.Result.Response.Airport.PluginData.Details.Code,
+			expected: AirportDetailsCode{Iata: "LAX", Icao: "KLAX"},
+		},
 	}
 
 	for _, subtest := range subtests {
