@@ -10,35 +10,44 @@ type AirportApiResponse struct {
 }
 
 type AirportResult struct {
-	Request AirportRequest `json:"request"`
+	Request  AirportRequest         `json:"request"`
+	Response AirportRequestResponse `json:"response"`
+}
 
-	Response struct {
-		Airport struct {
-			PluginData AirportPluginData `json:"pluginData"`
-		} `json:"airport"`
-	} `json:"response"`
+type AirportRequestResponse struct {
+	Airport AirportRequestResponseAirport `json:"airport"`
+}
+
+type AirportRequestResponseAirport struct {
+	PluginData AirportPluginData `json:"pluginData"`
 }
 
 type AirportRequest struct {
-	Callback      string `json:"callback"`
-	Code          string `json:"code"`
-	Device        string `json:"device"`
-	Fleet         string `json:"fleet"`
-	Format        string `json:"format"`
-	Limit         int    `json:"limit"`
-	Page          int    `json:"page"`
-	Pk            string `json:"pk"`
-	Plugin        string `json:"plugin"`
-	Token         string `json:"token"`
-	PluginSetting struct {
-		Schedule struct {
-			Mode      any `json:"mode"`
-			Timestamp int `json:"timestamp"`
-		} `json:"schedule"`
-		SatelliteImage struct {
-			Scale int `json:"scale"`
-		} `json:"satelliteImage"`
-	} `json:"plugin-setting"`
+	Callback      string                      `json:"callback"`
+	Code          string                      `json:"code"`
+	Device        string                      `json:"device"`
+	Fleet         string                      `json:"fleet"`
+	Format        string                      `json:"format"`
+	Limit         int                         `json:"limit"`
+	Page          int                         `json:"page"`
+	Pk            string                      `json:"pk"`
+	Plugin        []string                    `json:"plugin"`
+	Token         string                      `json:"token"`
+	PluginSetting AirportRequestPluginSetting `json:"plugin-setting"`
+}
+
+type AirportRequestPluginSetting struct {
+	Schedule       AirportRequestPluginSettingSchedule       `json:"schedule"`
+	SatelliteImage AirportRequestPluginSettingSatelliteImage `json:"satelliteImage"`
+}
+
+type AirportRequestPluginSettingSchedule struct {
+	Mode      any `json:"mode"`
+	Timestamp int `json:"timestamp"`
+}
+
+type AirportRequestPluginSettingSatelliteImage struct {
+	Scale int `json:"scale"`
 }
 
 type AirportPluginData struct {
