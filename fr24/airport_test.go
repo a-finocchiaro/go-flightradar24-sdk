@@ -8,14 +8,19 @@ import (
 	"testing"
 )
 
-type airportSubtest struct {
+type airportSubtests struct {
+	TestData
+	plugins []string
+}
+
+type airportJsonSubtest struct {
 	name     string
 	expected any
 	actual   any
 }
 
 func loadJsonAirportData(t *testing.T) []byte {
-	data, err := os.ReadFile("../testdata/airport_res.json")
+	data, err := os.ReadFile("./testdata/airport_res.json")
 
 	if err != nil {
 		t.Error(err.Error())
@@ -27,38 +32,57 @@ func loadJsonAirportData(t *testing.T) []byte {
 func TestGetAirport(t *testing.T) {
 	jsonRes := loadJsonAirportData(t)
 
-	goodSubtests := []TestData{
+	goodSubtests := []airportSubtests{
 		{
-			name: "No Error",
-			requester: func(s string) ([]byte, error) {
-				return jsonRes, nil
+			TestData: TestData{
+				name: "No Error",
+				requester: func(s string) ([]byte, error) {
+					return jsonRes, nil
+				},
+				expectedError: nil,
 			},
-			expectedError: nil,
+			plugins: []string{"details"},
 		},
 	}
 
-	errorSubtests := []TestData{
+	errorSubtests := []airportSubtests{
 		{
-			name: "Json Unmarshal Error",
-			requester: func(s string) ([]byte, error) {
-				res := jsonRes[:len(jsonRes)-1]
+			TestData: TestData{
+				name: "Json Unmarshal Error",
+				requester: func(s string) ([]byte, error) {
+					res := jsonRes[:len(jsonRes)-1]
 
-				return res, nil
+					return res, nil
+				},
+				expectedError: Fr24Error{Err: "unexpected end of JSON input"},
 			},
-			expectedError: Fr24Error{Err: "unexpected end of JSON input"},
+			plugins: []string{"details"},
 		},
 		{
-			name: "Request Error",
-			requester: func(s string) ([]byte, error) {
-				return []byte{}, Fr24Error{"some error"}
+			TestData: TestData{
+				name: "Request Error",
+				requester: func(s string) ([]byte, error) {
+					return []byte{}, Fr24Error{"some error"}
+				},
+				expectedError: Fr24Error{"some error"},
 			},
-			expectedError: Fr24Error{"some error"},
+			plugins: []string{"details"},
+		},
+		{
+			TestData: TestData{
+				name: "Invalid Plugin",
+				requester: func(s string) ([]byte, error) {
+					return jsonRes, nil
+				},
+				expectedError: Fr24Error{"Plugin badPlugin not supported."},
+			},
+			plugins: []string{"badPlugin"},
 		},
 	}
 
 	for _, subtest := range goodSubtests {
 		t.Run(subtest.name, func(t *testing.T) {
-			res, err := GetAirport(subtest.requester, "LAX")
+			res, err := GetAirport(subtest.requester, "LAX", subtest.plugins)
 
 			if !errors.Is(err, nil) {
 				t.Errorf("Expected no errors, got error (%v)", err)
@@ -72,7 +96,7 @@ func TestGetAirport(t *testing.T) {
 
 	for _, subtest := range errorSubtests {
 		t.Run(subtest.name+"_CDN", func(t *testing.T) {
-			res, err := GetAirport(subtest.requester, "LAX")
+			res, err := GetAirport(subtest.requester, "LAX", subtest.plugins)
 
 			if !errors.Is(err, subtest.expectedError) {
 				t.Errorf("Expected error (%v), got error (%v)", subtest.expectedError, err)
@@ -94,7 +118,7 @@ func TestAirportDataStructs(t *testing.T) {
 		t.Errorf("Error unmarshalling airport test data (%v)", err)
 	}
 
-	subtests := []airportSubtest{
+	subtests := []airportJsonSubtest{
 		{
 			name:     "AirportApiResponse",
 			expected: AirportApiResponse{airport.Result},

@@ -28,4 +28,11 @@ func main() {
 
 	// res, err := fr24.GetAirlineLogoCdn(requester, "WN", "SWA")
 	// fmt.Println(res)
+
+	res, err := fr24.GetAirport(requester, "LAX", []string{"details", "weather"})
+	fmt.Println(err)
+	fmt.Println(res)
+	// my_str := "plsugin[]=some_str"
+	// my_str += "&plugin[]=some_str2"
+	// fmt.Println(my_str)
 }

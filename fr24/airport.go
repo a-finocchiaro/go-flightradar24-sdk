@@ -3,6 +3,7 @@ package fr24
 import (
 	"encoding/json"
 	"fmt"
+	"slices"
 )
 
 type AirportApiResponse struct {
@@ -478,9 +479,35 @@ type AircraftImages struct {
 	Images       MultiSizeImages `json:"images"`
 }
 
-func GetAirport(requester Requester, code string) (AirportPluginData, error) {
+func getSupportedPlugins() []string {
+	return []string{
+		"details",
+		"flightdiary",
+		"schedule",
+		"weather",
+		"runways",
+		"satelliteImage",
+		"scheduledRoutesStatistics",
+	}
+}
+
+func GetAirport(requester Requester, code string, plugins []string) (AirportPluginData, error) {
 	var airport AirportApiResponse
-	endpoint := fmt.Sprintf("%s?code=%s&limit=100", FR24_ENDPOINTS["airport"], code)
+	var pluginQuery string
+
+	// verify the plugins are accepted
+	for _, plugin := range plugins {
+		if !slices.Contains(getSupportedPlugins(), plugin) {
+			err := Fr24Error{Err: fmt.Sprintf("Plugin %s not supported.", plugin)}
+
+			return airport.Result.Response.Airport.PluginData, err
+		}
+
+		// add plugin to the plugin query
+		pluginQuery += fmt.Sprintf("&plugin[]=%s", plugin)
+	}
+
+	endpoint := fmt.Sprintf("%s?code=%s&limit=100%s", FR24_ENDPOINTS["airport"], code, plugins)
 
 	body, err := requester(endpoint)
 
