@@ -29,7 +29,7 @@ func main() {
 	// res, err := fr24.GetAirlineLogoCdn(requester, "WN", "SWA")
 	// fmt.Println(res)
 
-	res, err := fr24.GetAirport(requester, "LAX", []string{"details", "weather"})
+	res, err := fr24.GetAirportDisruptions(requester)
 	fmt.Println(err)
 	fmt.Println(res)
 	// my_str := "plsugin[]=some_str"

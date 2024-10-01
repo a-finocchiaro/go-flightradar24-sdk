@@ -119,11 +119,6 @@ type AirportStatsQuantity struct {
 	Canceled int `json:"canceled"`
 }
 
-type DailyStats struct {
-	Percentage AirportStatsPercentage `json:"percentage"`
-	Quantity   AirportStatsQuantity   `json:"quantity"`
-}
-
 type AirportDetailsDelayIndex struct {
 	Arrivals   any `json:"arrivals"`
 	Departures any `json:"departures"`
@@ -290,14 +285,14 @@ type FlightAirport struct {
 
 type FlightAiportData struct {
 	Code     IataIcaoCode      `json:"code"`
-	Timezone FlightTimezone    `json:"timezone"`
+	Timezone Timezone          `json:"timezone"`
 	Info     FlightAirportInfo `json:"info"`
 	Name     string            `json:"name"`
 	Position Position          `json:"position"`
 	Visible  bool              `json:"visible"`
 }
 
-type FlightTimezone struct {
+type Timezone struct {
 	Name     string `json:"name"`
 	Offset   int    `json:"offset"`
 	Abbr     string `json:"abbr"`
