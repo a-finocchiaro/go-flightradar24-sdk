@@ -20,7 +20,7 @@ type airportJsonSubtest struct {
 }
 
 func loadJsonAirportData(t *testing.T) []byte {
-	data, err := os.ReadFile("./testdata/airport_res.json")
+	data, err := os.ReadFile("./testdata/airport_detailed.json")
 
 	if err != nil {
 		t.Error(err.Error())
@@ -82,7 +82,7 @@ func TestGetAirport(t *testing.T) {
 
 	for _, subtest := range goodSubtests {
 		t.Run(subtest.name, func(t *testing.T) {
-			res, err := GetAirport(subtest.requester, "LAX", subtest.plugins)
+			res, err := GetAirportDetails(subtest.requester, "LAX", subtest.plugins)
 
 			if !errors.Is(err, nil) {
 				t.Errorf("Expected no errors, got error (%v)", err)
@@ -96,7 +96,7 @@ func TestGetAirport(t *testing.T) {
 
 	for _, subtest := range errorSubtests {
 		t.Run(subtest.name+"_CDN", func(t *testing.T) {
-			res, err := GetAirport(subtest.requester, "LAX", subtest.plugins)
+			res, err := GetAirportDetails(subtest.requester, "LAX", subtest.plugins)
 
 			if !errors.Is(err, subtest.expectedError) {
 				t.Errorf("Expected error (%v), got error (%v)", subtest.expectedError, err)

@@ -69,7 +69,7 @@ type AirportDetails struct {
 	DelayIndex    AirportDetailsDelayIndex `json:"delayIndex"`
 	Stats         AirportStats             `json:"stats"`
 	Position      AirportDetailsPosition   `json:"position"`
-	Timezone      AirportDetailsTimezone   `json:"timezone"`
+	Timezone      Timezone                 `json:"timezone"`
 	URL           AirportDetailsURL        `json:"url"`
 	AirportImages MultiSizeImages          `json:"airportImages"`
 	Visible       bool                     `json:"visible"`
@@ -123,14 +123,17 @@ type AirportDetailsDelayIndex struct {
 	Arrivals   any `json:"arrivals"`
 	Departures any `json:"departures"`
 }
+
 type AirportDetailsCountry struct {
 	Name string `json:"name"`
 	Code string `json:"code"`
 	ID   int    `json:"id"`
 }
+
 type AirportDetailsRegion struct {
 	City string `json:"city"`
 }
+
 type AirportDetailsPosition struct {
 	Latitude  float64               `json:"latitude"`
 	Longitude float64               `json:"longitude"`
@@ -138,24 +141,20 @@ type AirportDetailsPosition struct {
 	Country   AirportDetailsCountry `json:"country"`
 	Region    AirportDetailsRegion  `json:"region"`
 }
-type AirportDetailsTimezone struct {
-	Name     string `json:"name"`
-	Offset   int    `json:"offset"`
-	Abbr     string `json:"abbr"`
-	AbbrName any    `json:"abbrName"`
-	IsDst    bool   `json:"isDst"`
-}
+
 type AirportDetailsURL struct {
 	Homepage  any    `json:"homepage"`
 	Webcam    any    `json:"webcam"`
 	Wikipedia string `json:"wikipedia"`
 }
+
 type ImageData struct {
 	Src       string `json:"src"`
 	Link      string `json:"link"`
 	Copyright string `json:"copyright"`
 	Source    string `json:"source"`
 }
+
 type MultiSizeImages struct {
 	Thumbnails []ImageData `json:"thumbnails"`
 	Medium     []ImageData `json:"medium"`
@@ -299,6 +298,7 @@ type Timezone struct {
 	AbbrName string `json:"abbrName"`
 	IsDst    bool   `json:"isDst"`
 }
+
 type FlightAirportInfo struct {
 	Terminal any `json:"terminal"`
 	Baggage  any `json:"baggage"`
@@ -312,6 +312,7 @@ type Country struct {
 type FlightAirportRegion struct {
 	City string `json:"city"`
 }
+
 type Position struct {
 	Latitude  float64             `json:"latitude"`
 	Longitude float64             `json:"longitude"`
@@ -486,7 +487,9 @@ func getSupportedPlugins() []string {
 	}
 }
 
-func GetAirport(requester Requester, code string, plugins []string) (AirportPluginData, error) {
+// Gets detailed information from the Flightradar24 API about an airport and parses the retured
+// data into structured data.
+func GetAirportDetails(requester Requester, code string, plugins []string) (AirportPluginData, error) {
 	var airport AirportApiResponse
 	var pluginQuery string
 
@@ -502,7 +505,7 @@ func GetAirport(requester Requester, code string, plugins []string) (AirportPlug
 		pluginQuery += fmt.Sprintf("&plugin[]=%s", plugin)
 	}
 
-	endpoint := fmt.Sprintf("%s?code=%s&limit=100%s", FR24_ENDPOINTS["airport"], code, plugins)
+	endpoint := fmt.Sprintf("%s?code=%s&limit=100%s", FR24_ENDPOINTS["airport_detail"], code, plugins)
 
 	body, err := requester(endpoint)
 
