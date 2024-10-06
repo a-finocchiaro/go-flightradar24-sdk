@@ -6,18 +6,18 @@ import (
 	"log"
 	"math/rand"
 
-	"github.com/a-finocchiaro/adsb_flightradar_top10/fr24"
+	"github.com/a-finocchiaro/adsb_flightradar_top10/internal"
 	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
 	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/flights"
 )
 
-func GetFlightDetails(requester fr24.Requester, flight_id string) (flights.Flight, error) {
+func GetFlightDetails(requester common.Requester, flight_id string) (flights.Flight, error) {
 	var flight flights.Flight
 
-	endpoint := fmt.Sprintf("%s?airport=%s", fr24.FR24_ENDPOINTS["flight_details"], flight_id)
+	endpoint := fmt.Sprintf("%s?airport=%s", common.FR24_ENDPOINTS["flight_details"], flight_id)
 
-	if err := fr24.SendRequest(requester, endpoint, &flight); err != nil {
-		return flight, fr24.NewFr24Error(err)
+	if err := internal.SendRequest(requester, endpoint, &flight); err != nil {
+		return flight, common.NewFr24Error(err)
 	}
 
 	return flight, nil

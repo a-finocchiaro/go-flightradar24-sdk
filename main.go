@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/a-finocchiaro/adsb_flightradar_top10/fr24"
+	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/client"
+	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
 	"github.com/a-finocchiaro/adsb_flightradar_top10/webrequest"
 )
 
 func main() {
-	var requester fr24.Requester = webrequest.SendRequest
-	tracked, err := fr24.GetFR24MostTracked(requester)
+	var requester common.Requester = webrequest.SendRequest
+	tracked, err := client.GetFR24MostTracked(requester)
 
 	if err != nil {
 		log.Fatalln("Something bad happened")
@@ -29,7 +30,7 @@ func main() {
 	// res, err := fr24.GetAirlineLogoCdn(requester, "WN", "SWA")
 	// fmt.Println(res)
 
-	res, err := fr24.GetAirportBrief(requester, "LHR")
+	res, err := client.GetAirportBrief(requester, "LHR")
 	fmt.Println(err)
 	fmt.Println(res)
 	// my_str := "plsugin[]=some_str"

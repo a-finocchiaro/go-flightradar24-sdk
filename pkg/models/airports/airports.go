@@ -65,9 +65,9 @@ type AirportDetails struct {
 	DelayIndex    AirportDetailsDelayIndex `json:"delayIndex"`
 	Stats         AirportStats             `json:"stats"`
 	Position      AirportDetailsPosition   `json:"position"`
-	Timezone      Timezone                 `json:"timezone"`
+	Timezone      common.Timezone          `json:"timezone"`
 	URL           AirportDetailsURL        `json:"url"`
-	AirportImages MultiSizeImages          `json:"airportImages"`
+	AirportImages common.MultiSizeImages   `json:"airportImages"`
 	Visible       bool                     `json:"visible"`
 }
 
@@ -139,21 +139,6 @@ type AirportDetailsURL struct {
 	Wikipedia string `json:"wikipedia"`
 }
 
-type ImageData struct {
-	// shared
-	Src       string `json:"src"`
-	Link      string `json:"link"`
-	Copyright string `json:"copyright"`
-	Source    string `json:"source"`
-}
-
-type MultiSizeImages struct {
-	// shared
-	Thumbnails []ImageData `json:"thumbnails"`
-	Medium     []ImageData `json:"medium"`
-	Large      []ImageData `json:"large"`
-}
-
 // Schedule
 type AirportSchedule struct {
 	Arrivals   AirportScheduleData `json:"arrivals"`
@@ -220,7 +205,7 @@ type FlightStatusGeneric struct {
 type FlightAircraft struct {
 	Model          FlightAircraftModel        `json:"model"`
 	Registration   string                     `json:"registration"`
-	Country        Country                    `json:"country"`
+	Country        common.Country             `json:"country"`
 	Hex            string                     `json:"hex"`
 	Restricted     bool                       `json:"restricted"`
 	SerialNo       string                     `json:"serialNo"`
@@ -272,41 +257,17 @@ type FlightAirport struct {
 
 type FlightAiportData struct {
 	Code     common.IataIcaoCode `json:"code"`
-	Timezone Timezone            `json:"timezone"`
+	Timezone common.Timezone     `json:"timezone"`
 	Info     FlightAirportInfo   `json:"info"`
 	Name     string              `json:"name"`
-	Position Position            `json:"position"`
+	Position common.Position     `json:"position"`
 	Visible  bool                `json:"visible"`
-}
-
-type Timezone struct {
-	Name     string `json:"name"`
-	Offset   int    `json:"offset"`
-	Abbr     string `json:"abbr"`
-	AbbrName string `json:"abbrName"`
-	IsDst    bool   `json:"isDst"`
 }
 
 type FlightAirportInfo struct {
 	Terminal any `json:"terminal"`
 	Baggage  any `json:"baggage"`
 	Gate     any `json:"gate"`
-}
-type Country struct {
-	Name string `json:"name"`
-	Code string `json:"code"`
-	ID   int    `json:"id"`
-}
-type FlightAirportRegion struct {
-	// shared
-	City string `json:"city"`
-}
-
-type Position struct {
-	Latitude  float64             `json:"latitude"`
-	Longitude float64             `json:"longitude"`
-	Country   Country             `json:"country"`
-	Region    FlightAirportRegion `json:"region"`
 }
 
 type Scheduled struct {
@@ -460,8 +421,8 @@ type AirlineCodeshareData struct {
 
 // AircraftImages
 type AircraftImages struct {
-	Registration string          `json:"registration"`
-	Images       MultiSizeImages `json:"images"`
+	Registration string                 `json:"registration"`
+	Images       common.MultiSizeImages `json:"images"`
 }
 
 // Airports Brief details, mainly correspond to the data returned by the airports/traffic-stats?airport= endpoint
@@ -470,32 +431,21 @@ type AirportBriefResponse struct {
 }
 
 type AirportBriefDetails struct {
-	Name     string                  `json:"name"`
-	Code     common.IataIcaoCode     `json:"code"`
-	Position AirportPosition         `json:"position"`
-	Timezone TimezoneWithOffsetHours `json:"timezone"`
-	Visible  bool                    `json:"visible"`
-	Website  string                  `json:"website"`
-	Stats    AirportBriefStats       `json:"stats"`
-}
-
-type CountryExtended struct {
-	Country
-	CodeLong string `json:"codeLong"`
-}
-
-type TimezoneWithOffsetHours struct {
-	// shared
-	Timezone
-	OffsetHours string `json:"offsetHours"`
+	Name     string                         `json:"name"`
+	Code     common.IataIcaoCode            `json:"code"`
+	Position AirportPosition                `json:"position"`
+	Timezone common.TimezoneWithOffsetHours `json:"timezone"`
+	Visible  bool                           `json:"visible"`
+	Website  string                         `json:"website"`
+	Stats    AirportBriefStats              `json:"stats"`
 }
 
 type AirportPosition struct {
-	Latitude  float64              `json:"latitude"`
-	Longitude float64              `json:"longitude"`
-	Altitude  int                  `json:"altitude"`
-	Country   CountryExtended      `json:"country"`
-	Region    AirportDetailsRegion `json:"region"`
+	Latitude  float64                `json:"latitude"`
+	Longitude float64                `json:"longitude"`
+	Altitude  int                    `json:"altitude"`
+	Country   common.CountryExtended `json:"country"`
+	Region    AirportDetailsRegion   `json:"region"`
 }
 
 type AirportBriefStats struct {

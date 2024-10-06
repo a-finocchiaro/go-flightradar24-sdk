@@ -3,7 +3,6 @@ package flights
 import (
 	"encoding/json"
 
-	"github.com/a-finocchiaro/adsb_flightradar_top10/fr24"
 	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
 )
 
@@ -68,13 +67,13 @@ type FlightStatusEventTime struct {
 }
 
 type FlightAircraft struct {
-	Model        FlightAircraftModel  `json:"model"`
-	CountryID    int                  `json:"countryId"`
-	Registration string               `json:"registration"`
-	Age          any                  `json:"age"`
-	Msn          any                  `json:"msn"`
-	Images       fr24.MultiSizeImages `json:"images"`
-	Hex          string               `json:"hex"`
+	Model        FlightAircraftModel    `json:"model"`
+	CountryID    int                    `json:"countryId"`
+	Registration string                 `json:"registration"`
+	Age          any                    `json:"age"`
+	Msn          any                    `json:"msn"`
+	Images       common.MultiSizeImages `json:"images"`
+	Hex          string                 `json:"hex"`
 }
 
 type FlightAircraftModel struct {
@@ -83,14 +82,14 @@ type FlightAircraftModel struct {
 }
 
 type Airline struct {
-	Name  string            `json:"name"`
-	Short string            `json:"short"`
-	Code  fr24.IataIcaoCode `json:"code"`
-	URL   string            `json:"url"`
+	Name  string              `json:"name"`
+	Short string              `json:"short"`
+	Code  common.IataIcaoCode `json:"code"`
+	URL   string              `json:"url"`
 }
 
 type PositionAlt struct {
-	fr24.Position
+	common.Position
 	Altitude int `json:"altitude"`
 }
 
@@ -101,12 +100,12 @@ type FlightAirportPair struct {
 }
 
 type FlightAirport struct {
-	Name     string                       `json:"name"`
-	Code     fr24.IataIcaoCode            `json:"code"`
-	Position PositionAlt                  `json:"position"`
-	Timezone fr24.TimezoneWithOffsetHours `json:"timezone"`
-	Visible  bool                         `json:"visible"`
-	Website  any                          `json:"website"`
+	Name     string                         `json:"name"`
+	Code     common.IataIcaoCode            `json:"code"`
+	Position PositionAlt                    `json:"position"`
+	Timezone common.TimezoneWithOffsetHours `json:"timezone"`
+	Visible  bool                           `json:"visible"`
+	Website  any                            `json:"website"`
 }
 
 type FlightAirportCurrent struct {

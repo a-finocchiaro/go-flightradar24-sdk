@@ -26,7 +26,7 @@ type AirportDisruptionAirport struct {
 	Longitude float64                  `json:"longitude"`
 	Country   AlphaCountry             `json:"country"`
 	Continent int                      `json:"continent"`
-	Timezone  Timezone                 `json:"timezone"`
+	Timezone  common.Timezone          `json:"timezone"`
 	Weather   AirportDisruptionWeather `json:"weather"`
 }
 

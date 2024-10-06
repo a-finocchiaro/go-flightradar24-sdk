@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"slices"
 
-	"github.com/a-finocchiaro/adsb_flightradar_top10/fr24"
 	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/airports"
 	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
 )
@@ -24,7 +23,7 @@ func getSupportedPlugins() []string {
 
 // Gets detailed information from the Flightradar24 API about an airport and parses the retured
 // data into structured data.
-func GetAirportDetails(requester fr24.Requester, code string, plugins []string) (airports.AirportPluginData, error) {
+func GetAirportDetails(requester common.Requester, code string, plugins []string) (airports.AirportPluginData, error) {
 	var airport airports.AirportApiResponse
 	var pluginQuery string
 
