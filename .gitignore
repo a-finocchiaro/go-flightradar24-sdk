@@ -1,10 +1,2 @@
-# ignore all
-*
-
-# keep all with extentions and files/dirs that start with a "."
-!*.*
-
-# unignore dirs
-!fr24
-!webrequest
-!testdata
+/tmp
+*.png

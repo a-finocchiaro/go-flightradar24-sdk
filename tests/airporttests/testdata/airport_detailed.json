@@ -1,0 +1,1182 @@
+{
+    "result": {
+        "request": {
+            "callback": null,
+            "code": "LAX",
+            "device": null,
+            "fleet": null,
+            "format": "json",
+            "limit": 100,
+            "page": 1,
+            "pk": null,
+            "plugin": [
+                "details",
+                "runways",
+                "satelliteImage",
+                "schedule",
+                "scheduledRoutesStatistics",
+                "weather"
+            ],
+            "plugin-setting": {
+                "schedule": {
+                    "mode": null,
+                    "timestamp": 1727645100
+                },
+                "satelliteImage": {
+                    "scale": 1
+                }
+            },
+            "token": null
+        },
+        "response": {
+            "airport": {
+                "pluginData": {
+                    "details": {
+                        "name": "Los Angeles International Airport",
+                        "code": {
+                            "iata": "LAX",
+                            "icao": "KLAX"
+                        },
+                        "delayIndex": {
+                            "arrivals": 0.42,
+                            "departures": 1.17
+                        },
+                        "stats": {
+                            "arrivals": {
+                                "delayIndex": 0.42,
+                                "delayAvg": 5,
+                                "percentage": {
+                                    "delayed": 0.21,
+                                    "canceled": 0,
+                                    "trend": "down"
+                                },
+                                "recent": {
+                                    "delayIndex": 0.42,
+                                    "delayAvg": 5,
+                                    "percentage": {
+                                        "delayed": 0.21,
+                                        "canceled": 0,
+                                        "trend": "down"
+                                    },
+                                    "quantity": {
+                                        "onTime": 74,
+                                        "delayed": 20,
+                                        "canceled": 0
+                                    }
+                                },
+                                "today": {
+                                    "percentage": {
+                                        "delayed": 0.04,
+                                        "canceled": 0
+                                    },
+                                    "quantity": {
+                                        "onTime": 320,
+                                        "delayed": 36,
+                                        "canceled": 4
+                                    }
+                                },
+                                "yesterday": {
+                                    "percentage": {
+                                        "delayed": 0.11,
+                                        "canceled": 0
+                                    },
+                                    "quantity": {
+                                        "onTime": 664,
+                                        "delayed": 81,
+                                        "canceled": 3
+                                    }
+                                },
+                                "tomorrow": {
+                                    "percentage": {
+                                        "canceled": 0
+                                    },
+                                    "quantity": {
+                                        "canceled": 2
+                                    }
+                                }
+                            },
+                            "departures": {
+                                "delayIndex": 1.17,
+                                "delayAvg": 14,
+                                "percentage": {
+                                    "delayed": 0.46,
+                                    "canceled": 0,
+                                    "trend": "up"
+                                },
+                                "recent": {
+                                    "delayIndex": 1.17,
+                                    "delayAvg": 14,
+                                    "percentage": {
+                                        "delayed": 0.46,
+                                        "canceled": 0,
+                                        "trend": "up"
+                                    },
+                                    "quantity": {
+                                        "onTime": 43,
+                                        "delayed": 36,
+                                        "canceled": 0
+                                    }
+                                },
+                                "today": {
+                                    "percentage": {
+                                        "delayed": 0.21,
+                                        "canceled": 0
+                                    },
+                                    "quantity": {
+                                        "onTime": 245,
+                                        "delayed": 188,
+                                        "canceled": 2
+                                    }
+                                },
+                                "yesterday": {
+                                    "percentage": {
+                                        "delayed": 0.48,
+                                        "canceled": 0
+                                    },
+                                    "quantity": {
+                                        "onTime": 383,
+                                        "delayed": 352,
+                                        "canceled": 3
+                                    }
+                                },
+                                "tomorrow": {
+                                    "percentage": {
+                                        "canceled": 0
+                                    },
+                                    "quantity": {
+                                        "canceled": 1
+                                    }
+                                }
+                            }
+                        },
+                        "position": {
+                            "latitude": 33.94252,
+                            "longitude": -118.406998,
+                            "elevation": 125,
+                            "country": {
+                                "name": "United States",
+                                "code": "US",
+                                "id": 236
+                            },
+                            "region": {
+                                "city": "Los Angeles"
+                            }
+                        },
+                        "timezone": {
+                            "name": "America/Los_Angeles",
+                            "offset": -25200,
+                            "abbr": "PDT",
+                            "abbrName": "Pacific Daylight Time",
+                            "isDst": true
+                        },
+                        "url": {
+                            "homepage": "http://www.lawa.org/welcomeLAX.aspx",
+                            "webcam": "http://airportwebcams.net/los-angeles-international-airport-webcam/",
+                            "wikipedia": "https://en.wikipedia.org/wiki/Los_Angeles_International_Airport"
+                        },
+                        "airportImages": {
+                            "thumbnails": [
+                                {
+                                    "src": "https://cdn.jetphotos.com/200/5/3591012_1709082791_tb.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11264434",
+                                    "copyright": "Florian Venus",
+                                    "source": "Jetphotos.com"
+                                },
+                                {
+                                    "src": "https://cdn.jetphotos.com/200/6/1908697_1703996784_tb.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11192645",
+                                    "copyright": "Steven Ma",
+                                    "source": "Jetphotos.com"
+                                },
+                                {
+                                    "src": "https://cdn.jetphotos.com/200/5/1041263_1709079372_tb.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11264429",
+                                    "copyright": "Brandon Ghany",
+                                    "source": "Jetphotos.com"
+                                },
+                                {
+                                    "src": "https://cdn.jetphotos.com/200/6/1076734_1694620457_tb.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11089228",
+                                    "copyright": "Rocky Wang",
+                                    "source": "Jetphotos.com"
+                                },
+                                {
+                                    "src": "https://cdn.jetphotos.com/200/5/1447072_1708177736_tb.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11249085",
+                                    "copyright": "Mark Lawrence",
+                                    "source": "Jetphotos.com"
+                                }
+                            ],
+                            "medium": [
+                                {
+                                    "src": "https://cdn.jetphotos.com/400/5/3591012_1709082791.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11264434",
+                                    "copyright": "Florian Venus",
+                                    "source": "Jetphotos.com"
+                                },
+                                {
+                                    "src": "https://cdn.jetphotos.com/400/6/1908697_1703996784.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11192645",
+                                    "copyright": "Steven Ma",
+                                    "source": "Jetphotos.com"
+                                },
+                                {
+                                    "src": "https://cdn.jetphotos.com/400/5/1041263_1709079372.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11264429",
+                                    "copyright": "Brandon Ghany",
+                                    "source": "Jetphotos.com"
+                                },
+                                {
+                                    "src": "https://cdn.jetphotos.com/400/6/1076734_1694620457.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11089228",
+                                    "copyright": "Rocky Wang",
+                                    "source": "Jetphotos.com"
+                                },
+                                {
+                                    "src": "https://cdn.jetphotos.com/400/5/1447072_1708177736.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11249085",
+                                    "copyright": "Mark Lawrence",
+                                    "source": "Jetphotos.com"
+                                }
+                            ],
+                            "large": [
+                                {
+                                    "src": "https://cdn.jetphotos.com/640cb/5/3591012_1709082791.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11264434",
+                                    "copyright": "Florian Venus",
+                                    "source": "Jetphotos.com"
+                                },
+                                {
+                                    "src": "https://cdn.jetphotos.com/640cb/6/1908697_1703996784.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11192645",
+                                    "copyright": "Steven Ma",
+                                    "source": "Jetphotos.com"
+                                },
+                                {
+                                    "src": "https://cdn.jetphotos.com/640cb/5/1041263_1709079372.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11264429",
+                                    "copyright": "Brandon Ghany",
+                                    "source": "Jetphotos.com"
+                                },
+                                {
+                                    "src": "https://cdn.jetphotos.com/640cb/6/1076734_1694620457.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11089228",
+                                    "copyright": "Rocky Wang",
+                                    "source": "Jetphotos.com"
+                                },
+                                {
+                                    "src": "https://cdn.jetphotos.com/640cb/5/1447072_1708177736.jpg",
+                                    "link": "https://www.jetphotos.com/photo/11249085",
+                                    "copyright": "Mark Lawrence",
+                                    "source": "Jetphotos.com"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    "schedule": {
+                        "arrivals": {
+                            "item": {
+                                "current": 100,
+                                "total": 1257,
+                                "limit": 100
+                            },
+                            "page": {
+                                "current": 1,
+                                "total": 13
+                            },
+                            "timestamp": 1727645100,
+                            "data": [
+                                {
+                                    "flight": {
+                                        "identification": {
+                                            "id": "3751a444",
+                                            "row": 5568905933,
+                                            "number": {
+                                                "default": "UA2403",
+                                                "alternative": null
+                                            },
+                                            "callsign": "UAL2403",
+                                            "codeshare": [
+                                                "NZ9533",
+                                                "VA8141"
+                                            ]
+                                        },
+                                        "status": {
+                                            "live": false,
+                                            "text": "Landed 13:27",
+                                            "icon": "green",
+                                            "estimated": null,
+                                            "ambiguous": false,
+                                            "generic": {
+                                                "status": {
+                                                    "text": "landed",
+                                                    "type": "arrival",
+                                                    "color": "green",
+                                                    "diverted": null
+                                                },
+                                                "eventTime": {
+                                                    "utc": 1727641675,
+                                                    "local": 1727616475
+                                                }
+                                            }
+                                        },
+                                        "aircraft": {
+                                            "model": {
+                                                "code": "B752",
+                                                "text": "Boeing 757-224"
+                                            },
+                                            "registration": "N17104",
+                                            "country": {
+                                                "id": 236,
+                                                "name": "United States",
+                                                "alpha2": "US",
+                                                "alpha3": "USA"
+                                            },
+                                            "hex": "A11F59",
+                                            "restricted": false,
+                                            "serialNo": null,
+                                            "age": {
+                                                "availability": true
+                                            },
+                                            "availability": {
+                                                "serialNo": true,
+                                                "age": true
+                                            }
+                                        },
+                                        "owner": {
+                                            "name": "United Airlines",
+                                            "code": {
+                                                "iata": "UA",
+                                                "icao": "UAL"
+                                            },
+                                            "logo": "https://images.flightradar24.com/assets/airlines/logotypes/29.png"
+                                        },
+                                        "airline": {
+                                            "name": "United Airlines",
+                                            "code": {
+                                                "iata": "UA",
+                                                "icao": "UAL"
+                                            },
+                                            "short": "United Airlines"
+                                        },
+                                        "airport": {
+                                            "origin": {
+                                                "code": {
+                                                    "iata": "EWR",
+                                                    "icao": "KEWR"
+                                                },
+                                                "timezone": {
+                                                    "name": "America/New_York",
+                                                    "offset": -14400,
+                                                    "abbr": "EDT",
+                                                    "abbrName": "Eastern Daylight Time",
+                                                    "isDst": true
+                                                },
+                                                "info": {
+                                                    "terminal": "C",
+                                                    "baggage": null,
+                                                    "gate": "82"
+                                                },
+                                                "name": "New York Newark Liberty International Airport",
+                                                "position": {
+                                                    "latitude": 40.692501,
+                                                    "longitude": -74.168602,
+                                                    "country": {
+                                                        "name": "United States",
+                                                        "code": "US",
+                                                        "id": 236
+                                                    },
+                                                    "region": {
+                                                        "city": "New York"
+                                                    }
+                                                },
+                                                "visible": true
+                                            },
+                                            "destination": {
+                                                "timezone": {
+                                                    "name": "America/Los_Angeles",
+                                                    "offset": -25200,
+                                                    "abbr": "PDT",
+                                                    "abbrName": "Pacific Daylight Time",
+                                                    "isDst": true
+                                                },
+                                                "info": {
+                                                    "terminal": "7",
+                                                    "baggage": "3",
+                                                    "gate": "71B"
+                                                }
+                                            },
+                                            "real": null
+                                        },
+                                        "time": {
+                                            "scheduled": {
+                                                "departure": 1727623800,
+                                                "arrival": 1727645340
+                                            },
+                                            "real": {
+                                                "departure": 1727624510,
+                                                "arrival": 1727641675
+                                            },
+                                            "estimated": {
+                                                "departure": null,
+                                                "arrival": null
+                                            },
+                                            "other": {
+                                                "eta": 1727641675,
+                                                "duration": 17160
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "flight": {
+                                        "identification": {
+                                            "id": "375249c0",
+                                            "row": 5568744316,
+                                            "number": {
+                                                "default": "DL2828",
+                                                "alternative": null
+                                            },
+                                            "callsign": "DAL2828",
+                                            "codeshare": [
+                                                "AF5722",
+                                                "AM3579",
+                                                "CI9087",
+                                                "KL7129",
+                                                "LA8617",
+                                                "SK3592"
+                                            ]
+                                        },
+                                        "status": {
+                                            "live": false,
+                                            "text": "Landed 14:03",
+                                            "icon": "green",
+                                            "estimated": null,
+                                            "ambiguous": false,
+                                            "generic": {
+                                                "status": {
+                                                    "text": "landed",
+                                                    "type": "arrival",
+                                                    "color": "green",
+                                                    "diverted": null
+                                                },
+                                                "eventTime": {
+                                                    "utc": 1727643829,
+                                                    "local": 1727618629
+                                                }
+                                            }
+                                        },
+                                        "aircraft": {
+                                            "model": {
+                                                "code": "A320",
+                                                "text": "Airbus A320-212"
+                                            },
+                                            "registration": "N372NW",
+                                            "country": {
+                                                "id": 236,
+                                                "name": "United States",
+                                                "alpha2": "US",
+                                                "alpha3": "USA"
+                                            },
+                                            "hex": "A43C7A",
+                                            "restricted": false,
+                                            "serialNo": null,
+                                            "age": {
+                                                "availability": true
+                                            },
+                                            "availability": {
+                                                "serialNo": true,
+                                                "age": true
+                                            }
+                                        },
+                                        "owner": {
+                                            "name": "Delta Air Lines",
+                                            "code": {
+                                                "iata": "DL",
+                                                "icao": "DAL"
+                                            },
+                                            "logo": "https://images.flightradar24.com/assets/airlines/logotypes/28.png"
+                                        },
+                                        "airline": {
+                                            "name": "Delta Air Lines",
+                                            "code": {
+                                                "iata": "DL",
+                                                "icao": "DAL"
+                                            },
+                                            "short": "Delta Air Lines"
+                                        },
+                                        "airport": {
+                                            "origin": {
+                                                "code": {
+                                                    "iata": "DEN",
+                                                    "icao": "KDEN"
+                                                },
+                                                "timezone": {
+                                                    "name": "America/Denver",
+                                                    "offset": -21600,
+                                                    "abbr": "MDT",
+                                                    "abbrName": "Mountain Daylight Time",
+                                                    "isDst": true
+                                                },
+                                                "info": {
+                                                    "terminal": null,
+                                                    "baggage": null,
+                                                    "gate": "A51"
+                                                },
+                                                "name": "Denver International Airport",
+                                                "position": {
+                                                    "latitude": 39.858784,
+                                                    "longitude": -104.673882,
+                                                    "country": {
+                                                        "name": "United States",
+                                                        "code": "US",
+                                                        "id": 236
+                                                    },
+                                                    "region": {
+                                                        "city": "Denver"
+                                                    }
+                                                },
+                                                "visible": true
+                                            },
+                                            "destination": {
+                                                "timezone": {
+                                                    "name": "America/Los_Angeles",
+                                                    "offset": -25200,
+                                                    "abbr": "PDT",
+                                                    "abbrName": "Pacific Daylight Time",
+                                                    "isDst": true
+                                                },
+                                                "info": {
+                                                    "terminal": "3",
+                                                    "baggage": "21",
+                                                    "gate": "37A"
+                                                }
+                                            },
+                                            "real": null
+                                        },
+                                        "time": {
+                                            "scheduled": {
+                                                "departure": 1727636400,
+                                                "arrival": 1727645400
+                                            },
+                                            "real": {
+                                                "departure": 1727636812,
+                                                "arrival": 1727643829
+                                            },
+                                            "estimated": {
+                                                "departure": null,
+                                                "arrival": null
+                                            },
+                                            "other": {
+                                                "eta": 1727643829,
+                                                "duration": 7020
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "departures": {
+                            "item": {
+                                "current": 100,
+                                "total": 1183,
+                                "limit": 100
+                            },
+                            "page": {
+                                "current": 1,
+                                "total": 12
+                            },
+                            "timestamp": 1727645100,
+                            "data": [
+                                {
+                                    "flight": {
+                                        "identification": {
+                                            "id": "3752b3d0",
+                                            "row": 5568733422,
+                                            "number": {
+                                                "default": "DL715",
+                                                "alternative": null
+                                            },
+                                            "callsign": "DAL715",
+                                            "codeshare": [
+                                                "AM4607",
+                                                "KE3687",
+                                                "KL5207",
+                                                "LA6232",
+                                                "VS3861",
+                                                "WS7506"
+                                            ]
+                                        },
+                                        "status": {
+                                            "live": true,
+                                            "text": "Estimated dep 14:20",
+                                            "icon": "green",
+                                            "estimated": null,
+                                            "ambiguous": false,
+                                            "generic": {
+                                                "status": {
+                                                    "text": "estimated",
+                                                    "type": "departure",
+                                                    "color": "green",
+                                                    "diverted": null
+                                                },
+                                                "eventTime": {
+                                                    "utc": 1727644800,
+                                                    "local": 1727619600
+                                                }
+                                            }
+                                        },
+                                        "aircraft": {
+                                            "model": {
+                                                "code": "A321",
+                                                "text": "Airbus A321-211"
+                                            },
+                                            "registration": "N101DQ",
+                                            "country": {
+                                                "id": 236,
+                                                "name": "United States",
+                                                "alpha2": "US",
+                                                "alpha3": "USA"
+                                            },
+                                            "hex": "A008C5",
+                                            "restricted": false,
+                                            "serialNo": null,
+                                            "age": {
+                                                "availability": true
+                                            },
+                                            "availability": {
+                                                "serialNo": true,
+                                                "age": true
+                                            }
+                                        },
+                                        "owner": {
+                                            "name": "Delta Air Lines",
+                                            "code": {
+                                                "iata": "DL",
+                                                "icao": "DAL"
+                                            },
+                                            "logo": "https://images.flightradar24.com/assets/airlines/logotypes/28.png"
+                                        },
+                                        "airline": {
+                                            "name": "Delta Air Lines",
+                                            "code": {
+                                                "iata": "DL",
+                                                "icao": "DAL"
+                                            },
+                                            "short": "Delta Air Lines"
+                                        },
+                                        "airport": {
+                                            "origin": {
+                                                "timezone": {
+                                                    "name": "America/Los_Angeles",
+                                                    "offset": -25200,
+                                                    "abbr": "PDT",
+                                                    "abbrName": "Pacific Daylight Time",
+                                                    "isDst": true
+                                                },
+                                                "info": {
+                                                    "terminal": "3",
+                                                    "baggage": null,
+                                                    "gate": "31B"
+                                                }
+                                            },
+                                            "destination": {
+                                                "code": {
+                                                    "iata": "ATL",
+                                                    "icao": "KATL"
+                                                },
+                                                "timezone": {
+                                                    "name": "America/New_York",
+                                                    "offset": -14400,
+                                                    "abbr": "EDT",
+                                                    "abbrName": "Eastern Daylight Time",
+                                                    "isDst": true
+                                                },
+                                                "info": {
+                                                    "terminal": "S",
+                                                    "baggage": "2",
+                                                    "gate": "C33"
+                                                },
+                                                "name": "Atlanta Hartsfield-Jackson International Airport",
+                                                "position": {
+                                                    "latitude": 33.636719,
+                                                    "longitude": -84.428001,
+                                                    "country": {
+                                                        "name": "United States",
+                                                        "code": "US",
+                                                        "id": 236
+                                                    },
+                                                    "region": {
+                                                        "city": "Atlanta"
+                                                    }
+                                                },
+                                                "visible": true
+                                            },
+                                            "real": null
+                                        },
+                                        "time": {
+                                            "scheduled": {
+                                                "departure": 1727645100,
+                                                "arrival": 1727660940
+                                            },
+                                            "real": {
+                                                "departure": null,
+                                                "arrival": null
+                                            },
+                                            "estimated": {
+                                                "departure": 1727644800,
+                                                "arrival": null
+                                            },
+                                            "other": {
+                                                "eta": null,
+                                                "duration": null
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "flight": {
+                                        "identification": {
+                                            "id": null,
+                                            "row": 5568706064,
+                                            "number": {
+                                                "default": "AS2029",
+                                                "alternative": "QX2029"
+                                            },
+                                            "callsign": "QXE2029",
+                                            "codeshare": [
+                                                "CX7906",
+                                                "DE5038",
+                                                "QR2123",
+                                                "TN2374"
+                                            ]
+                                        },
+                                        "status": {
+                                            "live": false,
+                                            "text": "Estimated dep 15:13",
+                                            "icon": "red",
+                                            "estimated": null,
+                                            "ambiguous": false,
+                                            "generic": {
+                                                "status": {
+                                                    "text": "estimated",
+                                                    "type": "departure",
+                                                    "color": "red",
+                                                    "diverted": null
+                                                },
+                                                "eventTime": {
+                                                    "utc": 1727647980,
+                                                    "local": 1727622780
+                                                }
+                                            }
+                                        },
+                                        "aircraft": {
+                                            "model": {
+                                                "code": "E75L",
+                                                "text": "Embraer E175LR"
+                                            },
+                                            "registration": "N643QX",
+                                            "country": {
+                                                "id": 236,
+                                                "name": "United States",
+                                                "alpha2": "US",
+                                                "alpha3": "USA"
+                                            },
+                                            "hex": "A871D4",
+                                            "restricted": false,
+                                            "serialNo": null,
+                                            "age": {
+                                                "availability": true
+                                            },
+                                            "availability": {
+                                                "serialNo": true,
+                                                "age": true
+                                            }
+                                        },
+                                        "owner": {
+                                            "name": "Horizon Air",
+                                            "code": {
+                                                "iata": "QX",
+                                                "icao": "QXE"
+                                            },
+                                            "logo": "https://images.flightradar24.com/assets/airlines/logotypes/356.png"
+                                        },
+                                        "airline": {
+                                            "name": "Alaska Horizon",
+                                            "code": {
+                                                "iata": "AS",
+                                                "icao": "ASA"
+                                            },
+                                            "short": "Alaska Airlines"
+                                        },
+                                        "airport": {
+                                            "origin": {
+                                                "timezone": {
+                                                    "name": "America/Los_Angeles",
+                                                    "offset": -25200,
+                                                    "abbr": "PDT",
+                                                    "abbrName": "Pacific Daylight Time",
+                                                    "isDst": true
+                                                },
+                                                "info": {
+                                                    "terminal": "6",
+                                                    "baggage": null,
+                                                    "gate": "60"
+                                                }
+                                            },
+                                            "destination": {
+                                                "code": {
+                                                    "iata": "LAS",
+                                                    "icao": "KLAS"
+                                                },
+                                                "timezone": {
+                                                    "name": "America/Los_Angeles",
+                                                    "offset": -25200,
+                                                    "abbr": "PDT",
+                                                    "abbrName": "Pacific Daylight Time",
+                                                    "isDst": true
+                                                },
+                                                "info": {
+                                                    "terminal": "3",
+                                                    "baggage": null,
+                                                    "gate": "E14"
+                                                },
+                                                "name": "Las Vegas Harry Reid International Airport",
+                                                "position": {
+                                                    "latitude": 36.080051,
+                                                    "longitude": -115.152,
+                                                    "country": {
+                                                        "name": "United States",
+                                                        "code": "US",
+                                                        "id": 236
+                                                    },
+                                                    "region": {
+                                                        "city": "Las Vegas"
+                                                    }
+                                                },
+                                                "visible": true
+                                            },
+                                            "real": null
+                                        },
+                                        "time": {
+                                            "scheduled": {
+                                                "departure": 1727645220,
+                                                "arrival": 1727650020
+                                            },
+                                            "real": {
+                                                "departure": null,
+                                                "arrival": null
+                                            },
+                                            "estimated": {
+                                                "departure": 1727647980,
+                                                "arrival": null
+                                            },
+                                            "other": {
+                                                "eta": null,
+                                                "duration": null
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "weather": {
+                        "metar": "KLAX 292053Z 25009KT 10SM FEW004 19/14 A2989 RMK AO2 SLP120 T01940139 58016 $",
+                        "time": 1727643180,
+                        "qnh": 1012,
+                        "dewpoint": {
+                            "celsius": 14,
+                            "fahrenheit": 57
+                        },
+                        "humidity": 70,
+                        "pressure": {
+                            "hg": 30,
+                            "hpa": 1012
+                        },
+                        "sky": {
+                            "condition": {
+                                "text": "Cloudy"
+                            },
+                            "visibility": {
+                                "km": 16093000,
+                                "mi": 10,
+                                "nmi": 9
+                            }
+                        },
+                        "flight": {
+                            "category": null
+                        },
+                        "wind": {
+                            "direction": {
+                                "degree": 250,
+                                "text": "From west"
+                            },
+                            "speed": {
+                                "kmh": 18,
+                                "kts": 10,
+                                "mph": 11,
+                                "text": "Mod"
+                            }
+                        },
+                        "temp": {
+                            "celsius": 19,
+                            "fahrenheit": 66
+                        },
+                        "elevation": {
+                            "m": 38,
+                            "ft": 125
+                        },
+                        "cached": 1727643829
+                    },
+                    "aircraftCount": {
+                        "ground": 159,
+                        "onGround": {
+                            "visible": 54,
+                            "total": 158
+                        }
+                    },
+                    "runways": [
+                        {
+                            "name": "06L",
+                            "length": {
+                                "ft": 8926,
+                                "m": 2721
+                            },
+                            "surface": {
+                                "code": "COAS",
+                                "name": "Concrete/Asphalt"
+                            }
+                        },
+                        {
+                            "name": "06R",
+                            "length": {
+                                "ft": 10885,
+                                "m": 3318
+                            },
+                            "surface": {
+                                "code": "CONC",
+                                "name": "Concrete"
+                            }
+                        },
+                        {
+                            "name": "07L",
+                            "length": {
+                                "ft": 12923,
+                                "m": 3939
+                            },
+                            "surface": {
+                                "code": "CONC",
+                                "name": "Concrete"
+                            }
+                        },
+                        {
+                            "name": "07R",
+                            "length": {
+                                "ft": 11095,
+                                "m": 3382
+                            },
+                            "surface": {
+                                "code": "COAS",
+                                "name": "Concrete/Asphalt"
+                            }
+                        },
+                        {
+                            "name": "24L",
+                            "length": {
+                                "ft": 10885,
+                                "m": 3318
+                            },
+                            "surface": {
+                                "code": "CONC",
+                                "name": "Concrete"
+                            }
+                        },
+                        {
+                            "name": "24R",
+                            "length": {
+                                "ft": 8926,
+                                "m": 2721
+                            },
+                            "surface": {
+                                "code": "COAS",
+                                "name": "Concrete/Asphalt"
+                            }
+                        },
+                        {
+                            "name": "25L",
+                            "length": {
+                                "ft": 11095,
+                                "m": 3382
+                            },
+                            "surface": {
+                                "code": "COAS",
+                                "name": "Concrete/Asphalt"
+                            }
+                        },
+                        {
+                            "name": "25R",
+                            "length": {
+                                "ft": 12923,
+                                "m": 3939
+                            },
+                            "surface": {
+                                "code": "CONC",
+                                "name": "Concrete"
+                            }
+                        }
+                    ],
+                    "satelliteImage": "https://maps.googleapis.com/maps/api/staticmap?center=33.942875,-118.407814&zoom=13&scale=1&maptype=satellite&size=334x285&client=gme-flightradar24ab1&channel=30&signature=4ANCMeoNn4sHDWL48PZjvAx_VzE=",
+                    "satelliteImageProperties": {
+                        "center": [
+                            33.942875,
+                            -118.407814
+                        ],
+                        "zoom": 13,
+                        "scale": 1
+                    },
+                    "scheduledRoutesStatistics": {
+                        "totalFlights": 5360,
+                        "topRoute": {
+                            "from": "LAX",
+                            "to": "SFO",
+                            "count": 260
+                        },
+                        "airportsServed": 187,
+                        "countriesServed": 42
+                    }
+                }
+            },
+            "airlines": {
+                "codeshare": {
+                    "AA": {
+                        "name": "American Airlines",
+                        "code": {
+                            "iata": "AA",
+                            "icao": "AAL"
+                        }
+                    },
+                    "AC": {
+                        "name": "Air Canada",
+                        "code": {
+                            "iata": "AC",
+                            "icao": "ACA"
+                        }
+                    }
+                }
+            },
+            "aircraftImages": [
+                {
+                    "registration": "N510SY",
+                    "images": null
+                },
+                {
+                    "registration": "N17104",
+                    "images": {
+                        "thumbnails": [
+                            {
+                                "src": "https://cdn.jetphotos.com/200/5/875433_1725735432_tb.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11470301",
+                                "copyright": "Gary Oragano",
+                                "source": "Jetphotos.com"
+                            },
+                            {
+                                "src": "https://cdn.jetphotos.com/200/6/1059798_1719442097_tb.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11390944",
+                                "copyright": "Gary Oragano",
+                                "source": "Jetphotos.com"
+                            },
+                            {
+                                "src": "https://cdn.jetphotos.com/200/6/1320498_1720603922_tb.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11407168",
+                                "copyright": "Alejandro Gutierrez Martin",
+                                "source": "Jetphotos.com"
+                            },
+                            {
+                                "src": "https://cdn.jetphotos.com/200/5/1435411_1720349942_tb.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11403223",
+                                "copyright": "Juan Manuel Gibaja",
+                                "source": "Jetphotos.com"
+                            },
+                            {
+                                "src": "https://cdn.jetphotos.com/200/6/1464175_1717710759_tb.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11371292",
+                                "copyright": "Michael Rodeback",
+                                "source": "Jetphotos.com"
+                            }
+                        ],
+                        "medium": [
+                            {
+                                "src": "https://cdn.jetphotos.com/400/5/875433_1725735432.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11470301",
+                                "copyright": "Gary Oragano",
+                                "source": "Jetphotos.com"
+                            },
+                            {
+                                "src": "https://cdn.jetphotos.com/400/6/1059798_1719442097.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11390944",
+                                "copyright": "Gary Oragano",
+                                "source": "Jetphotos.com"
+                            },
+                            {
+                                "src": "https://cdn.jetphotos.com/400/6/1320498_1720603922.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11407168",
+                                "copyright": "Alejandro Gutierrez Martin",
+                                "source": "Jetphotos.com"
+                            },
+                            {
+                                "src": "https://cdn.jetphotos.com/400/5/1435411_1720349942.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11403223",
+                                "copyright": "Juan Manuel Gibaja",
+                                "source": "Jetphotos.com"
+                            },
+                            {
+                                "src": "https://cdn.jetphotos.com/400/6/1464175_1717710759.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11371292",
+                                "copyright": "Michael Rodeback",
+                                "source": "Jetphotos.com"
+                            }
+                        ],
+                        "large": [
+                            {
+                                "src": "https://cdn.jetphotos.com/640cb/5/875433_1725735432.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11470301",
+                                "copyright": "Gary Oragano",
+                                "source": "Jetphotos.com"
+                            },
+                            {
+                                "src": "https://cdn.jetphotos.com/640cb/6/1059798_1719442097.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11390944",
+                                "copyright": "Gary Oragano",
+                                "source": "Jetphotos.com"
+                            },
+                            {
+                                "src": "https://cdn.jetphotos.com/640cb/6/1320498_1720603922.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11407168",
+                                "copyright": "Alejandro Gutierrez Martin",
+                                "source": "Jetphotos.com"
+                            },
+                            {
+                                "src": "https://cdn.jetphotos.com/640cb/5/1435411_1720349942.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11403223",
+                                "copyright": "Juan Manuel Gibaja",
+                                "source": "Jetphotos.com"
+                            },
+                            {
+                                "src": "https://cdn.jetphotos.com/640cb/6/1464175_1717710759.jpg?v=0",
+                                "link": "https://www.jetphotos.com/photo/11371292",
+                                "copyright": "Michael Rodeback",
+                                "source": "Jetphotos.com"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "_api": {
+        "copyright": "Copyright (c) 2014-2024 Flightradar24 AB. All rights reserved.",
+        "legalNotice": "The contents of this file and all derived data are the property of Flightradar24 AB for use exclusively by its products and applications. Using, modifying or redistributing the data without the prior written permission of Flightradar24 AB is not allowed and may result in prosecutions."
+    }
+}

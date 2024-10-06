@@ -1,0 +1,123 @@
+{
+    "success": true,
+    "meta": {},
+    "data": {
+        "rank": [
+            {
+                "airport": {
+                    "code": {
+                        "iata": "TIJ",
+                        "icao": "MMTJ"
+                    },
+                    "name": "Tijuana International Airport",
+                    "city": "Tijuana",
+                    "latitude": 32.541061,
+                    "longitude": -116.970001,
+                    "country": {
+                        "name": "MEXICO",
+                        "alpha2": "MX",
+                        "alpha3": "MEX"
+                    },
+                    "continent": 6,
+                    "timezone": {
+                        "name": "America/Tijuana",
+                        "offset": -25200,
+                        "offsetHours": "-7:00",
+                        "abbr": "PDT",
+                        "abbrName": "Pacific Daylight Time",
+                        "isDst": true
+                    },
+                    "weather": {
+                        "temp": {
+                            "celsius": 17,
+                            "fahrenheit": 63
+                        },
+                        "wind": {
+                            "direction": {
+                                "degree": 270,
+                                "text": "From west"
+                            },
+                            "speed": {
+                                "kmh": 11,
+                                "kts": 6,
+                                "mph": 7,
+                                "text": "Mod"
+                            }
+                        },
+                        "sky": {
+                            "condition": {
+                                "text": "Clear"
+                            }
+                        }
+                    }
+                },
+                "arrivals": {
+                    "live": {
+                        "index": 5,
+                        "averageDelayMin": 84,
+                        "ontime": 3,
+                        "delayed": 5,
+                        "delayedPercentage": 0.63,
+                        "cancelled": 0,
+                        "cancelledPercentage": 0,
+                        "trend": "static"
+                    },
+                    "yesterday": {
+                        "total": 98,
+                        "delayed": 49,
+                        "delayedPercentage": 0.5,
+                        "cancelled": 2,
+                        "cancelledPercentage": 0.02
+                    },
+                    "today": {
+                        "total": 106,
+                        "delayed": 31,
+                        "delayedPercentage": 0.29,
+                        "cancelled": 13,
+                        "cancelledPercentage": 0.12
+                    },
+                    "tomorrow": {
+                        "total": 103,
+                        "delayed": 0,
+                        "delayedPercentage": 0,
+                        "cancelled": 2,
+                        "cancelledPercentage": 0.02
+                    }
+                },
+                "departures": {
+                    "live": {
+                        "index": 2.2,
+                        "averageDelayMin": 26,
+                        "ontime": 2,
+                        "delayed": 4,
+                        "delayedPercentage": 0.67,
+                        "cancelled": 0,
+                        "cancelledPercentage": 0,
+                        "trend": "down"
+                    },
+                    "yesterday": {
+                        "total": 102,
+                        "delayed": 69,
+                        "delayedPercentage": 0.68,
+                        "cancelled": 1,
+                        "cancelledPercentage": 0.01
+                    },
+                    "today": {
+                        "total": 110,
+                        "delayed": 57,
+                        "delayedPercentage": 0.52,
+                        "cancelled": 8,
+                        "cancelledPercentage": 0.07
+                    },
+                    "tomorrow": {
+                        "total": 106,
+                        "delayed": 0,
+                        "delayedPercentage": 0,
+                        "cancelled": 2,
+                        "cancelledPercentage": 0.02
+                    }
+                }
+            }
+        ]
+    }
+}
