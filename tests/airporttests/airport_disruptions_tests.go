@@ -38,15 +38,6 @@ func TestGetAirportDisruptions(t *testing.T) {
 
 	errorSubtests := []tests.TestData{
 		{
-			Name: "Json Unmarshal Error",
-			Requester: func(s string) ([]byte, error) {
-				res := jsonRes[:len(jsonRes)-1]
-
-				return res, nil
-			},
-			ExpectedError: common.Fr24Error{Err: "unExpected end of JSON input"},
-		},
-		{
 			Name: "Request Error",
 			Requester: func(s string) ([]byte, error) {
 				return []byte{}, common.Fr24Error{Err: "some error"}

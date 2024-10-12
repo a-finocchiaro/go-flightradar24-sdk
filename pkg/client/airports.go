@@ -1,10 +1,10 @@
 package client
 
 import (
-	"encoding/json"
 	"fmt"
 	"slices"
 
+	"github.com/a-finocchiaro/adsb_flightradar_top10/internal"
 	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/airports"
 	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
 )
@@ -41,13 +41,7 @@ func GetAirportDetails(requester common.Requester, code string, plugins []string
 
 	endpoint := fmt.Sprintf("%s?code=%s&limit=100%s", common.FR24_ENDPOINTS["airport_detail"], code, plugins)
 
-	body, err := requester(endpoint)
-
-	if err != nil {
-		return airport.Result.Response.Airport.PluginData, common.NewFr24Error(err)
-	}
-
-	if err := json.Unmarshal(body, &airport); err != nil {
+	if err := internal.SendRequest(requester, endpoint, &airport); err != nil {
 		return airport.Result.Response.Airport.PluginData, common.NewFr24Error(err)
 	}
 
@@ -62,13 +56,7 @@ func GetAirportBrief(requester common.Requester, code string) (airports.AirportB
 
 	endpoint := fmt.Sprintf("%s?airport=%s", common.FR24_ENDPOINTS["airport_brief"], code)
 
-	body, err := requester(endpoint)
-
-	if err != nil {
-		return airport.Details, common.NewFr24Error(err)
-	}
-
-	if err := json.Unmarshal(body, &airport); err != nil {
+	if err := internal.SendRequest(requester, endpoint, &airport); err != nil {
 		return airport.Details, common.NewFr24Error(err)
 	}
 
@@ -78,13 +66,8 @@ func GetAirportBrief(requester common.Requester, code string) (airports.AirportB
 // Gets a report of the current airport distruption rankings
 func GetAirportDisruptions(requester common.Requester) ([]airports.AirportDisruptionRank, error) {
 	var disruptions airports.AirportDistruptionApiResponse
-	body, err := requester(common.FR24_ENDPOINTS["airport_disruptions"])
 
-	if err != nil {
-		return disruptions.Data.Rank, common.NewFr24Error(err)
-	}
-
-	if err := json.Unmarshal(body, &disruptions); err != nil {
+	if err := internal.SendRequest(requester, common.FR24_ENDPOINTS["airport_disruptions"], &disruptions); err != nil {
 		return disruptions.Data.Rank, common.NewFr24Error(err)
 	}
 
