@@ -232,10 +232,6 @@ func (fd *FeedFlightData) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-type Fr24FeedInterface interface {
-	UnmarshalJSON([]byte) error
-}
-
 type Fr24FeedData struct {
 	Full_count int                       `json:"full_count"`
 	Version    int                       `json:"version"`

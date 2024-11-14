@@ -9,15 +9,6 @@ import (
 	"github.com/a-finocchiaro/adsb_flightradar_top10/tests"
 )
 
-type SpyFr24FeedData struct {
-	Calls [][]byte
-}
-
-func (s *SpyFr24FeedData) UnmarshalJSON(data []byte) error {
-	s.Calls = append(s.Calls, data)
-	return nil
-}
-
 func TestGetFlights(t *testing.T) {
 	goodSubTests := []tests.TestData{
 		{
@@ -78,7 +69,7 @@ func TestGetFlights(t *testing.T) {
 		{
 			Name: "Request Error",
 			Requester: func(s string) ([]byte, error) {
-				return []byte(``), common.Fr24Error{Err: "Bad Request"}
+				return []byte{}, common.Fr24Error{Err: "Bad Request"}
 			},
 			ExpectedError: common.Fr24Error{Err: "Bad Request"},
 		},
@@ -116,30 +107,28 @@ func TestGetFlights(t *testing.T) {
 
 	for _, subtest := range goodSubTests {
 		t.Run(subtest.Name, func(t *testing.T) {
-			var feedSpy SpyFr24FeedData
-			err := client.GetFlights(subtest.Requester, &feedSpy)
+			feedData, err := client.GetFlights(subtest.Requester)
 
 			if !errors.Is(err, subtest.ExpectedError) {
 				t.Errorf("Expected no errors, got error (%v)", err)
 			}
 
-			if len(feedSpy.Calls) != 1 {
-				t.Errorf("Expected %d call, got %d", 1, len(feedSpy.Calls))
+			if len(feedData.Flights) != 2 {
+				t.Errorf("Expected 2 flights to be unpacked, received (%d)", len(feedData.Flights))
 			}
 		})
 	}
 
 	for _, subtest := range errorSubTests {
 		t.Run(subtest.Name, func(t *testing.T) {
-			var feedSpy SpyFr24FeedData
-			err := client.GetFlights(subtest.Requester, &feedSpy)
+			feedData, err := client.GetFlights(subtest.Requester)
 
 			if !errors.Is(err, subtest.ExpectedError) {
 				t.Errorf("Expected error (%s), got error (%v)", subtest.ExpectedError, err)
 			}
 
-			if len(feedSpy.Calls) != 0 {
-				t.Errorf("Expected %d call, got %d", 0, len(feedSpy.Calls))
+			if len(feedData.Flights) != 0 {
+				t.Errorf("Expected %d call, got %d", 0, len(feedData.Flights))
 			}
 		})
 	}

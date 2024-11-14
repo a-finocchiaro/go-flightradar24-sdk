@@ -1,9 +1,7 @@
 package client
 
 import (
-	"encoding/json"
 	"fmt"
-	"log"
 	"math/rand"
 
 	"github.com/a-finocchiaro/adsb_flightradar_top10/internal"
@@ -23,26 +21,23 @@ func GetFlightDetails(requester common.Requester, flight_id string) (flights.Fli
 	return flight, nil
 }
 
-func GetFlights(requester common.Requester, flightFeed flights.Fr24FeedInterface) error {
-	body, err := requester(common.FR24_ENDPOINTS["all_tracked"])
+// Gets the latest copy of the flight feed from the all tracked endpoint and parses the data
+// into a Fr24FeedData object.
+func GetFlights(requester common.Requester) (flights.Fr24FeedData, error) {
+	var flightFeed flights.Fr24FeedData
 
-	if err != nil {
-		return common.NewFr24Error(err)
+	if err := internal.SendRequest(requester, common.FR24_ENDPOINTS["all_tracked"], &flightFeed); err != nil {
+		return flightFeed, common.NewFr24Error(err)
 	}
 
-	if err := json.Unmarshal(body, &flightFeed); err != nil {
-		return common.NewFr24Error(err)
-	}
-
-	return nil
+	return flightFeed, nil
 }
 
 func GetRandomFlight(requester common.Requester) (string, error) {
 	var rand_flight flights.FeedFlightData
 	var flightId string
-	var feedData flights.Fr24FeedData
 
-	err := GetFlights(requester, &feedData)
+	feedData, err := GetFlights(requester)
 
 	if err != nil {
 		return "", err
@@ -68,14 +63,8 @@ func GetRandomFlight(requester common.Requester) (string, error) {
 
 func GetFR24MostTracked(requester common.Requester) (flights.Fr24MostTrackedRes, error) {
 	var most_tracked flights.Fr24MostTrackedRes
-	body, err := requester(common.FR24_ENDPOINTS["most_tracked"])
 
-	if err != nil {
-		log.Fatalln(err)
-		return most_tracked, err
-	}
-
-	if err := json.Unmarshal(body, &most_tracked); err != nil {
+	if err := internal.SendRequest(requester, common.FR24_ENDPOINTS["most_tracked"], &most_tracked); err != nil {
 		return most_tracked, common.NewFr24Error(err)
 	}
 

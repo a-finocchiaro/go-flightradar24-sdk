@@ -40,29 +40,11 @@ func TestGetFr24MostTracked(t *testing.T) {
 
 	errorSubtests := []tests.TestData{
 		{
-			Name: "json decode error",
+			Name: "Request Error",
 			Requester: func(s string) ([]byte, error) {
-				// the error is the missing `}` in the first data element
-				return []byte(`{
-					"version": "0.3.9",
-					"update_time": 1722142873.821783,
-					"data": [
-						{
-							"flight_id": "365caee6",
-							"flight": null,
-							"callsign": "ARN767",
-							"squawk": null,
-							"clicks": 828,
-							"from_iata": "HND",
-							"from_city": "Tokyo",
-							"to_iata": "ICN",
-							"to_city": "Seoul",
-							"model": "B763",
-							"type": "Boeing 767-35D(ER)"
-					]
-				}`), nil
+				return []byte{}, common.Fr24Error{Err: "some error"}
 			},
-			ExpectedError: common.Fr24Error{Err: "invalid character ']' after object key:value pair"},
+			ExpectedError: common.Fr24Error{Err: "some error"},
 		},
 	}
 
