@@ -12,7 +12,7 @@ import (
 func GetFlightDetails(requester common.Requester, flight_id string) (flights.Flight, error) {
 	var flight flights.Flight
 
-	endpoint := fmt.Sprintf("%s?airport=%s", common.FR24_ENDPOINTS["flight_details"], flight_id)
+	endpoint := fmt.Sprintf("%s?flight=%s", common.FR24_ENDPOINTS["flight_details"], flight_id)
 
 	if err := internal.SendRequest(requester, endpoint, &flight); err != nil {
 		return flight, common.NewFr24Error(err)
