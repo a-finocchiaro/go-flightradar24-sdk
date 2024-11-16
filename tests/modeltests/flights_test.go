@@ -1,8 +1,10 @@
-package flights
+package modeltests
 
 import (
 	"encoding/json"
 	"testing"
+
+	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/flights"
 )
 
 type FlightFeedTestData struct {
@@ -74,7 +76,7 @@ func TestFlightUnmarshal(t *testing.T) {
 
 	for _, subtest := range goodSubTests {
 		t.Run(subtest.Name, func(t *testing.T) {
-			var flightFeed Fr24FeedData
+			var flightFeed flights.Fr24FeedData
 
 			err := json.Unmarshal(subtest.JsonData, &flightFeed)
 
@@ -158,7 +160,7 @@ func TestFlightUnmarshal(t *testing.T) {
 
 	for _, subtest := range errorSubTests {
 		t.Run(subtest.Name, func(t *testing.T) {
-			var flightFeed Fr24FeedData
+			var flightFeed flights.Fr24FeedData
 			err := json.Unmarshal(subtest.JsonData, &flightFeed)
 
 			if err == nil {
