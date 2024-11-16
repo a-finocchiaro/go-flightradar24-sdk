@@ -226,7 +226,7 @@ func (fd *FeedFlightData) UnmarshalJSON(data []byte) error {
 	}
 
 	if err := json.Unmarshal(data, &temp); err != nil {
-		return err
+		return common.NewFr24Error(err)
 	}
 
 	return nil
@@ -264,6 +264,7 @@ func (f *Fr24FeedData) UnmarshalJSON(data []byte) error {
 	delete(temp.Flights, "version")
 
 	f.Full_count = temp.FullCount
+	f.Version = temp.Version
 	f.Flights = make(map[string]FeedFlightData)
 
 	// parse the json of each flight
