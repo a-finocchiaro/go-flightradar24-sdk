@@ -18,4 +18,5 @@ var FR24_ENDPOINTS = map[string]string{
 	"all_tracked":         fmt.Sprintf("%s/zones/fcgi/feed.js", FR24_DATA_CLOUD),
 	"flight_details":      fmt.Sprintf("%s/clickhandler", FR24_DATA_LIVE),
 	"most_tracked":        fmt.Sprintf("%s/flights/most-tracked", FR24_BASE),
+	"zones":               fmt.Sprintf("%s/js/zones.js.php", FR24_BASE),
 }
