@@ -338,8 +338,8 @@ func TestRouteUnmarshal(t *testing.T) {
 				t.Errorf("Expected no errors, got error (%v)", err)
 			}
 
-			if route.Arrivals.Country.Number.Airports != 1 {
-				t.Errorf("Expected FullCount to be (%d), got (%d)", 1, route.Arrivals.Country.Number.Airports)
+			if route.Arrivals.Number.Airports != 1 {
+				t.Errorf("Expected FullCount to be (%d), got (%d)", 1, route.Arrivals.Number.Airports)
 			}
 		})
 	}
