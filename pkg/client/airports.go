@@ -73,3 +73,16 @@ func GetAirportDisruptions(requester common.Requester) ([]airports.AirportDisrup
 
 	return disruptions.Data.Rank, nil
 }
+
+// Gets routes between specific airports
+func GetAirportRoutes(requester common.Requester, airport1 string, airport2 string) (airports.AirportRouteResponse, error) {
+	var routeInfo airports.AirportRouteResponse
+
+	url := fmt.Sprintf("%s/data/airports/%s/routes?get-airport-arr=%s&format=json", common.FR24_BASE, airport1, airport2)
+
+	if err := internal.SendRequest(requester, url, &routeInfo); err != nil {
+		return routeInfo, common.NewFr24Error(err)
+	}
+
+	return routeInfo, nil
+}

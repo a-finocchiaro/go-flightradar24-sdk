@@ -34,9 +34,12 @@ func main() {
 	// fmt.Println(err)
 	// fmt.Println(res)
 
-	zoneres, err := client.GetZones(requester)
-	fmt.Println(zoneres)
+	// zoneres, err := client.GetZones(requester)
+	// fmt.Println(zoneres)
 	// my_str := "plsugin[]=some_str"
 	// my_str += "&plugin[]=some_str2"
 	// fmt.Println(my_str)
+
+	routeres, err := client.GetAirportRoutes(requester, "tus", "SAN")
+	fmt.Println(routeres)
 }
