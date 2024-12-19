@@ -23,11 +23,12 @@ func (a *AirportRoute) UnmarshalJSON(data []byte) error {
 	var temp map[string]struct {
 		Number   AirportRouteNumber `json:"number"`
 		Airports map[string]struct {
-			Name    string `json:"name"`
-			City    string `json:"city"`
-			Icao    string `json:"Icao"`
-			Flights map[string]struct {
-				Airline AirportRouteFlightInfoExtended    `json:"Airline"`
+			Name     string     `json:"name"`
+			City     string     `json:"city"`
+			Icao     string     `json:"Icao"`
+			Position LatLongStr `json:"position"`
+			Flights  map[string]struct {
+				Airline AirportRouteAirline               `json:"Airline"`
 				Utc     map[string]AirportRouteFlightTime `json:"utc"`
 			} `json:"flights"`
 		} `json:"airports"`
@@ -48,6 +49,7 @@ func (a *AirportRoute) UnmarshalJSON(data []byte) error {
 			a.Airports.City = airportData.City
 			a.Airports.Icao = airportData.Icao
 			a.Airports.Name = airportData.Name
+			a.Airports.Position = airportData.Position
 
 			// get the flight IDs
 			for id, flightData := range airportData.Flights {
@@ -58,7 +60,7 @@ func (a *AirportRoute) UnmarshalJSON(data []byte) error {
 
 				for date, timeData := range flightData.Utc {
 					timeData.Date = date
-					flight.Times = append(flight.Times, timeData)
+					flight.Utc = append(flight.Utc, timeData)
 				}
 
 				a.Airports.Flights = append(a.Airports.Flights, flight)
@@ -80,21 +82,17 @@ type AirportRouteData struct {
 }
 
 type AirportRouteAirport struct {
-	Name    string                   `json:"name"`
-	City    string                   `json:"city"`
-	Icao    string                   `json:"icao"`
-	Flights []AirportRouteFlightData `json:"flights"`
+	Name     string                   `json:"name"`
+	City     string                   `json:"city"`
+	Icao     string                   `json:"icao"`
+	Position LatLongStr               `json:"position"`
+	Flights  []AirportRouteFlightData `json:"flights"`
 }
 
 type AirportRouteFlightData struct {
-	ID      string                         `json:"id"`
-	Airline AirportRouteFlightInfoExtended `json:"Airline"`
-	Times   []AirportRouteFlightTime       `json:"times"`
-}
-
-type AirportRouteFlightInfoExtended struct {
-	Airline AirportRouteAirline    `json:"airline"`
-	Utc     AirportRouteFlightTime `json:"utc"`
+	ID      string                   `json:"id"`
+	Airline AirportRouteAirline      `json:"Airline"`
+	Utc     []AirportRouteFlightTime `json:"utc"`
 }
 
 type AirportRouteAirline struct {
@@ -114,4 +112,9 @@ type AirportRouteFlightTimeAircraftInfo struct {
 	Time      string `json:"time"`
 	Timestamp int64  `json:"timestamp"`
 	Offset    int    `json:"offset"`
+}
+
+type LatLongStr struct {
+	Latitude  string `json:"lat"`
+	Longitude string `json:"lon"`
 }
