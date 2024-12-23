@@ -7,8 +7,8 @@ import (
 	"image"
 	"image/png"
 
-	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/airlines"
-	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/airlines"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/common"
 )
 
 func GetAirlines(requester common.Requester) (airlines.AirlineRes, error) {

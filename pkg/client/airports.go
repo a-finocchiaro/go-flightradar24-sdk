@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"slices"
 
-	"github.com/a-finocchiaro/adsb_flightradar_top10/internal"
-	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/airports"
-	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/internal"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/airports"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/common"
 )
 
 func getSupportedPlugins() []string {

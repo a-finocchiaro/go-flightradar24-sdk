@@ -3,7 +3,7 @@ package airports
 import (
 	"encoding/json"
 
-	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/common"
 )
 
 type AirportRouteResponse struct {

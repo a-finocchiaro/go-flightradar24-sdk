@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/airports"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/airports"
 )
 
 func TestRouteUnmarshal(t *testing.T) {

@@ -3,7 +3,7 @@ package internal
 import (
 	"encoding/json"
 
-	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/common"
 )
 
 // Forwards a request to FlightRadar24 and unmarshals the response into the desired

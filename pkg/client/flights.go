@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/a-finocchiaro/adsb_flightradar_top10/internal"
-	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
-	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/flights"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/internal"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/common"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/flights"
 )
 
 func GetFlightDetails(requester common.Requester, flight_id string) (flights.Flight, error) {

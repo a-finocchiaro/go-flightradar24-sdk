@@ -1,9 +1,9 @@
 package client
 
 import (
-	"github.com/a-finocchiaro/adsb_flightradar_top10/internal"
-	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
-	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/geography"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/internal"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/common"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/geography"
 )
 
 func GetZones(requester common.Requester) (geography.Fr24Zones, error) {

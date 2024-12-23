@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
-	"github.com/a-finocchiaro/adsb_flightradar_top10/tests"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/common"
+	"github.com/a-finocchiaro/go-flightradar24-sdk/tests"
 )
 
 type DummyJson struct {

@@ -1,3 +1,3 @@
-module github.com/a-finocchiaro/adsb_flightradar_top10
+module github.com/a-finocchiaro/go-flightradar24-sdk
 
 go 1.22.0

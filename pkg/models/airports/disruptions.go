@@ -1,6 +1,6 @@
 package airports
 
-import "github.com/a-finocchiaro/adsb_flightradar_top10/pkg/models/common"
+import "github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/common"
 
 type AirportDistruptionApiResponse struct {
 	Success bool                  `json:"success"`
