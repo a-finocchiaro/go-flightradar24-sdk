@@ -16,7 +16,9 @@ var FR24_ENDPOINTS = map[string]string{
 	"airport_detail":      fmt.Sprintf("%s/common/v1/airport.json", FR24_API),
 	"airport_disruptions": fmt.Sprintf("%s/webapi/v1/airport-disruptions", FR24_BASE),
 	"all_tracked":         fmt.Sprintf("%s/zones/fcgi/feed.js", FR24_DATA_CLOUD),
+	"api_search":          fmt.Sprintf("%s/common/v1/search.json", FR24_API),
 	"flight_details":      fmt.Sprintf("%s/clickhandler", FR24_DATA_LIVE),
 	"most_tracked":        fmt.Sprintf("%s/flights/most-tracked", FR24_BASE),
+	"search":              fmt.Sprintf("%s/v1/search/web/find", FR24_BASE),
 	"zones":               fmt.Sprintf("%s/js/zones.js.php", FR24_BASE),
 }

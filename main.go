@@ -40,6 +40,10 @@ func main() {
 	// my_str += "&plugin[]=some_str2"
 	// fmt.Println(my_str)
 
-	routeres, err := client.GetAirportRoutes(requester, "tus", "SAN")
-	fmt.Println(routeres)
+	// routeres, err := client.GetAirportRoutes(requester, "tus", "SAN")
+	// fmt.Println(routeres)
+
+	details, err := client.GetAirportDetails(requester, "TUS", []string{"details"})
+	fmt.Println(len(details.Schedule.Arrivals.Data))
+
 }
