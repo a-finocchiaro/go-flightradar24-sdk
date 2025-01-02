@@ -13,7 +13,7 @@ type Flight struct {
 	Promote        bool                 `json:"promote"`
 	Aircraft       FlightAircraft       `json:"aircraft"`
 	Airline        Airline              `json:"airline"`
-	Owner          any                  `json:"owner"`
+	Owner          FlightOwner          `json:"owner"`
 	Airspace       any                  `json:"airspace"`
 	Airport        FlightAirportPair    `json:"airport"`
 	FlightHistory  FlightHistory        `json:"flightHistory"`
@@ -25,6 +25,12 @@ type Flight struct {
 	S              string               `json:"s"`
 }
 
+type FlightOwner struct {
+	Name string              `json:"name"`
+	Code common.IataIcaoCode `json:"code"`
+	Logo string              `json:"logo"`
+}
+
 type FlightIdentificationBase struct {
 	ID     string       `json:"id"`
 	Number FlightNumber `json:"number"`
@@ -32,8 +38,9 @@ type FlightIdentificationBase struct {
 
 type FlightIdentification struct {
 	FlightIdentificationBase
-	Row      int64  `json:"row"`
-	Callsign string `json:"callsign"`
+	Row       int64  `json:"row"`
+	Callsign  string `json:"callsign"`
+	Codeshare any    `json:"codeshare"`
 }
 
 type FlightNumber struct {
@@ -67,13 +74,29 @@ type FlightStatusEventTime struct {
 }
 
 type FlightAircraft struct {
-	Model        FlightAircraftModel    `json:"model"`
-	CountryID    int                    `json:"countryId"`
-	Registration string                 `json:"registration"`
-	Age          any                    `json:"age"`
-	Msn          any                    `json:"msn"`
-	Images       common.MultiSizeImages `json:"images"`
-	Hex          string                 `json:"hex"`
+	Model          FlightAircraftModel        `json:"model"`
+	CountryID      int                        `json:"countryId"`
+	Registration   string                     `json:"registration"`
+	Msn            any                        `json:"msn"`
+	Images         common.MultiSizeImages     `json:"images"`
+	Hex            string                     `json:"hex"`
+	Country        common.Country             `json:"country"`
+	Restricted     bool                       `json:"restricted"`
+	SerialNo       string                     `json:"serialNo"`
+	Age            FlightAircraftAge          `json:"age"`
+	Availability   FlightAircraftAvailability `json:"availability"`
+	OnGroundUpdate int                        `json:"onGroundUpdate"`
+	HoursDiff      float32                    `json:"hoursDiff"`
+	TimeDiff       float32                    `json:"timeDiff"`
+}
+
+type FlightAircraftAge struct {
+	Availability bool `json:"availability"`
+}
+
+type FlightAircraftAvailability struct {
+	SerialNo bool `json:"serialNo"`
+	Age      bool `json:"age"`
 }
 
 type FlightAircraftModel struct {
@@ -94,23 +117,19 @@ type PositionAlt struct {
 }
 
 type FlightAirportPair struct {
-	Origin      FlightAirportCurrent `json:"origin"`
-	Destination FlightAirportCurrent `json:"destination"`
-	Real        any                  `json:"real"`
+	Origin      FlightAirport `json:"origin"`
+	Destination FlightAirport `json:"destination"`
+	Real        any           `json:"real"`
 }
 
 type FlightAirport struct {
-	Name     string                         `json:"name"`
-	Code     common.IataIcaoCode            `json:"code"`
-	Position PositionAlt                    `json:"position"`
-	Timezone common.TimezoneWithOffsetHours `json:"timezone"`
-	Visible  bool                           `json:"visible"`
-	Website  any                            `json:"website"`
-}
-
-type FlightAirportCurrent struct {
-	FlightAirport
-	Info FlightAirportTerminalBaggageGate `json:"info"`
+	Name     string                           `json:"name"`
+	Code     common.IataIcaoCode              `json:"code"`
+	Position PositionAlt                      `json:"position"`
+	Timezone common.TimezoneWithOffsetHours   `json:"timezone"`
+	Visible  bool                             `json:"visible"`
+	Website  any                              `json:"website"`
+	Info     FlightAirportTerminalBaggageGate `json:"info"`
 }
 
 type FlightAirportTerminalBaggageGate struct {
