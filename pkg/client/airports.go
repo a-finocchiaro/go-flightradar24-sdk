@@ -39,7 +39,7 @@ func GetAirportDetails(requester common.Requester, code string, plugins []string
 		pluginQuery += fmt.Sprintf("&plugin[]=%s", plugin)
 	}
 
-	endpoint := fmt.Sprintf("%s?code=%s&limit=5%s", common.FR24_ENDPOINTS["airport_detail"], code, plugins)
+	endpoint := fmt.Sprintf("%s?code=%s&limit=50%s", common.FR24_ENDPOINTS["airport_detail"], code, plugins)
 
 	if err := internal.SendRequest(requester, endpoint, &airport); err != nil {
 		return airport.Result.Response.Airport.PluginData, common.NewFr24Error(err)
