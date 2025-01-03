@@ -179,15 +179,6 @@ type FlightIdentificationNumber struct {
 	Alternative string `json:"alternative"`
 }
 
-// type FlightStatus struct {
-// 	Live      bool                `json:"live"`
-// 	Text      string              `json:"text"`
-// 	Icon      string              `json:"icon"`
-// 	Estimated any                 `json:"estimated"`
-// 	Ambiguous bool                `json:"ambiguous"`
-// 	Generic   FlightStatusGeneric `json:"generic"`
-// }
-
 type FlightStatusGenericStatus struct {
 	Text     string `json:"text"`
 	Type     string `json:"type"`
@@ -204,52 +195,6 @@ type FlightStatusGeneric struct {
 	Status    FlightStatusGenericStatus    `json:"status"`
 	EventTime FlightStatusGenericEventTime `json:"eventTime"`
 }
-
-// type FlightAircraft struct {
-// 	Model          FlightAircraftModel        `json:"model"`
-// 	Registration   string                     `json:"registration"`
-// 	Country        common.Country             `json:"country"`
-// 	Hex            string                     `json:"hex"`
-// 	Restricted     bool                       `json:"restricted"`
-// 	SerialNo       string                     `json:"serialNo"`
-// 	Age            FlightAircraftAge          `json:"age"`
-// 	Availability   FlightAircraftAvailability `json:"availability"`
-// 	OnGroundUpdate int                        `json:"onGroundUpdate"`
-// 	HoursDiff      float32                    `json:"hoursDiff"`
-// 	TimeDiff       float32                    `json:"timeDiff"`
-// }
-
-// type FlightAircraftModel struct {
-// 	Code string `json:"code"`
-// 	Text string `json:"text"`
-// }
-
-// type FlightAircraftAge struct {
-// 	Availability bool `json:"availability"`
-// }
-
-// type FlightAircraftAvailability struct {
-// 	SerialNo bool `json:"serialNo"`
-// 	Age      bool `json:"age"`
-// }
-
-// type FlightAirline struct {
-// 	Name  string              `json:"name"`
-// 	Code  common.IataIcaoCode `json:"code"`
-// 	Short string              `json:"short"`
-// }
-
-// type FlightOwner struct {
-// 	Name string              `json:"name"`
-// 	Code common.IataIcaoCode `json:"code"`
-// 	Logo string              `json:"logo"`
-// }
-
-// type FlightAirport struct {
-// 	Origin      FlightAiportData `json:"origin"`
-// 	Destination FlightAiportData `json:"destination"`
-// 	Real        any              `json:"real"`
-// }
 
 type FlightAiportData struct {
 	Code     common.IataIcaoCode `json:"code"`
@@ -282,22 +227,6 @@ type Other struct {
 	Eta      int `json:"eta"`
 	Duration any `json:"duration"`
 }
-
-//	type FlightTime struct {
-//		Scheduled Scheduled `json:"scheduled"`
-//		Real      Real      `json:"real"`
-//		Estimated Estimated `json:"estimated"`
-//		Other     Other     `json:"other"`
-//	}
-// type Flight struct {
-// 	Identification flights.FlightIdentification `json:"identification"`
-// 	Status         flights.FlightStatus         `json:"status"`
-// 	Aircraft       flights.FlightAircraft       `json:"aircraft"`
-// 	Owner          flights.FlightOwner          `json:"owner"`
-// 	Airline        flights.Airline              `json:"airline"`
-// 	Airport        flights.FlightAirportPair    `json:"airport"`
-// 	Time           flights.FlightTime           `json:"time"`
-// }
 
 // Weather
 type AirportWeather struct {
