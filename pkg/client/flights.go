@@ -3,6 +3,7 @@ package client
 import (
 	"fmt"
 	"math/rand"
+	"strings"
 
 	"github.com/a-finocchiaro/go-flightradar24-sdk/internal"
 	"github.com/a-finocchiaro/go-flightradar24-sdk/pkg/models/common"
@@ -27,6 +28,16 @@ func GetFlights(requester common.Requester) (flights.Fr24FeedData, error) {
 	var flightFeed flights.Fr24FeedData
 
 	if err := internal.SendRequest(requester, common.FR24_ENDPOINTS["all_tracked"], &flightFeed); err != nil {
+		return flightFeed, common.NewFr24Error(err)
+	}
+
+	return flightFeed, nil
+}
+
+func GetFlightsInZone(requester common.Requester, bounds string) (flights.Fr24FeedData, error) {
+	var flightFeed flights.Fr24FeedData
+
+	if err := internal.SendRequest(requester, common.FR24_ENDPOINTS["all_tracked"]+"?bounds="+strings.Replace(strings.Replace(bounds, " ", "", -1), ",", "", -1), &flightFeed); err != nil {
 		return flightFeed, common.NewFr24Error(err)
 	}
 
