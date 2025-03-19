@@ -10,7 +10,7 @@ import (
 )
 
 func GetBounds(zone map[string]float64) string {
-	return fmt.Sprintf("%.6f, %.6f, %.6f, %.6f", zone["tl_y"], zone["br_y"], zone["tl_x"], zone["br_x"])
+	return fmt.Sprintf("%.6f,%.6f,%.6f,%.6f", zone["tl_y"], zone["br_y"], zone["tl_x"], zone["br_x"])
 }
 
 func GetBoundsByPoint(latitude, longitude, radius float64) string {

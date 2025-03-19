@@ -37,7 +37,7 @@ func GetFlights(requester common.Requester) (flights.Fr24FeedData, error) {
 func GetFlightsInZone(requester common.Requester, bounds string) (flights.Fr24FeedData, error) {
 	var flightFeed flights.Fr24FeedData
 
-	if err := internal.SendRequest(requester, common.FR24_ENDPOINTS["all_tracked"]+"?bounds="+strings.Replace(strings.Replace(bounds, " ", "", -1), ",", "", -1), &flightFeed); err != nil {
+	if err := internal.SendRequest(requester, common.FR24_ENDPOINTS["zones_feed"]+"?bounds="+strings.Replace(bounds, ",", "%2C", -1), &flightFeed); err != nil {
 		return flightFeed, common.NewFr24Error(err)
 	}
 
