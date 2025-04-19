@@ -43,7 +43,11 @@ func main() {
 	// routeres, err := client.GetAirportRoutes(requester, "tus", "SAN")
 	// fmt.Println(routeres)
 
-	details, err := client.GetAirportDetails(requester, "TUS", []string{"details"})
-	fmt.Println(len(details.Schedule.Arrivals.Data))
+	// details, err := client.GetAirportDetails(requester, "TUS", []string{"details"})
+	// fmt.Println(len(details.Schedule.Arrivals.Data))
+
+	// zones, err := client.GetFlightsInZone(requester, "52.567967,13.282644,2000")
+	radius := client.GetBoundsByPoint(32.918559, -97.058446, 500*1000)
+	fmt.Println(radius)
 
 }

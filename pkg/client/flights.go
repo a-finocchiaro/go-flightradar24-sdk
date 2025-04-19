@@ -34,6 +34,7 @@ func GetFlights(requester common.Requester) (flights.Fr24FeedData, error) {
 	return flightFeed, nil
 }
 
+// Gets flights contained in a bounding box
 func GetFlightsInZone(requester common.Requester, bounds string) (flights.Fr24FeedData, error) {
 	var flightFeed flights.Fr24FeedData
 
