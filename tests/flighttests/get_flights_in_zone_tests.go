@@ -16,52 +16,7 @@ func TestGetFlightsInZone(t *testing.T) {
 		{
 			Name: "No error",
 			Requester: func(s string) ([]byte, error) {
-				return []byte(`{
-					"full_count": 17238,
-					"version": 4,
-					"3655152d": [
-						"AC0A9A",
-						39.8283,
-						-101.8552,
-						11,
-						56100,
-						6,
-						"",
-						"F-KPUB1",
-						"BALL",
-						"N875TH",
-						1722800892,
-						"",
-						"",
-						"",
-						0,
-						8576,
-						"HBAL645",
-						0,
-						""
-					],
-					"365564ca": [
-						"ABFBBE",
-						35.0530,
-						-109.7382,
-						296,
-						51100,
-						6,
-						"",
-						"F-KGUP3",
-						"BALL",
-						"N871TH",
-						1722800891,
-						"",
-						"",
-						"",
-						0,
-						0,
-						"HBAL641",
-						0,
-						""
-					]
-				}`), nil
+				return []byte(dummyFeedJsonData), nil
 			},
 			ExpectedError: nil,
 		},
@@ -78,30 +33,7 @@ func TestGetFlightsInZone(t *testing.T) {
 		{
 			Name: "JSON unmarshal error",
 			Requester: func(s string) ([]byte, error) {
-				return []byte(`{
-					"full_count": 17238,
-					"version": 4,
-					"3655152d": [
-						"AC0A9A",
-						39.8283,
-						-101.8552,
-						11,
-						56100,
-						6,
-						"",
-						"F-KPUB1",
-						"BALL",
-						"N875TH",
-						1722800892,
-						"",
-						"",
-						"",
-						0,
-						8576,
-						"HBAL645",
-						0,
-						""
-				}`), nil
+				return []byte(dummyFeedJsonDataBad), nil
 			},
 			ExpectedError: common.Fr24Error{Err: "invalid character '}' after array element"},
 		},
